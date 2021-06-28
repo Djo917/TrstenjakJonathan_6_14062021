@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="shortcut icon" type="image/png" href="images/logo.ico"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    
+    <title>Fisheye</title>
+</head>
+
+<body>
+    <div class="modal">
+        <span id="modal--close" class="close"></span>
+        <p class="modal--contactname">Contactez-moi <br> Mimi Keel</p>
+        <form 
+            method="post"
+            name="contact"
+            id="formulaire"
+            class="modal__contact"
+        >
+
+        <div class="modal__contact--firstname modal__contact--pos">
+            <label for="first">Prénom</label><br>
+            <input
+                class="modal__contact--textarea"
+                type="text"
+                id="first"
+                name="first"
+            >
+            <span id="messageErreurPrenom" class="messageErreur"></span>
+        </div>
+
+        <div class="modal__contact--lastname modal__contact--pos">
+            <label for="last">Nom</label><br>
+            <input
+                class="modal__contact--textarea"
+                type="text"
+                id="last"
+                name="last"
+            >
+            <span id="messageErreurNom" class="messageErreur"></span>
+        </div>
+
+        <div class="modal__contact--email modal__contact--pos">
+            <label for="email">Email</label><br>
+            <input
+                class="modal__contact--textarea"
+                type="email"
+                id="email"
+                name="email"
+            >
+            <span id="messageErreurEmail" class="messageErreur"></span>
+        </div>
+
+        <div class="modal__contact--message modal__contact--pos">
+            <label for="email">Votre message</label><br>
+            <input
+                class="modal__contact--textareamsg"
+                type="text"
+                id="message"
+                name="message"
+            >
+            <span id="messageErreurEmail" class="messageErreur"></span>
+        </div>
+        
+        <div class ="modal__contact--btn modal__contact--pos">
+            <input
+                class="modal__contact--btnsubmit"
+                type="submit"
+                id="btnsubmit"
+                value="Envoyer"
+            />
+        </div>
+
+        </form>  
+    </div>
+</body>
