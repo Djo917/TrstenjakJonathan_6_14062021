@@ -1,3 +1,5 @@
+@import 'photographers';
+@import 'modal';
 $primarybackground: #901C1C;
 $primarytext: #D3573C;
 $secondarybackground: #D3573C;
@@ -41,83 +43,5 @@ $textmodal: #312E2E;
 
     &--price {
         color: $pricetext;
-    }
-}
-
-.modal {
-    height: 460px;
-    width: 380px;
-    background-color: #DB8876;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-
-    &--contactname {
-        margin-left: 1em;
-        font-size: 1.5em;
-        color: $textmodal;
-    }
-    &--close {
-        position: absolute;
-        right: 0em;
-        top: 5em;
-        width: 32px;
-        height: 32px;
-        opacity: 1;
-    }
-    /*
-    &--close:before {
-        position: absolute;
-        left: 15px;
-        content: " ";
-        height: 33px;
-        width: 3px;
-        background-color: #fff;
-    }
-
-    &--close:after {
-        position: absolute;
-        left: 15px;
-        content: " ";
-        height: 33px;
-        width: 3px;
-        background-color: #fff;
-    }
-
-    &--close:before {
-        transform: rotate(45deg);
-    }
-
-    &--close:after {
-        transform: rotate(45deg);
-    }
-    */
-    &__contact--pos {
-        margin-top: 0.5em;
-        margin-left: 1.5em; 
-    }
-
-    &__contact--textarea {
-        width: 25em;
-        height: 2em;
-        color: $textmodal;
-        border: none;
-        border-radius: 5px;
-    }
-    
-    &__contact--textareamsg {
-        width: 25em;
-        height: 7em;
-        border: none;
-        border-radius: 5px;
-    }
-
-    &__contact--btnsubmit {
-        height: 3em;
-        width: 7em;
-        color: white;
-        background-color: $primarybackground;
-        border: none;
-        border-radius: 5px;
     }
 }

@@ -42,48 +42,49 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  /*
-    &--close:before {
-        position: absolute;
-        left: 15px;
-        content: " ";
-        height: 33px;
-        width: 3px;
-        background-color: #fff;
-    }
-
-    &--close:after {
-        position: absolute;
-        left: 15px;
-        content: " ";
-        height: 33px;
-        width: 3px;
-        background-color: #fff;
-    }
-
-    &--close:before {
-        transform: rotate(45deg);
-    }
-
-    &--close:after {
-        transform: rotate(45deg);
-    }
-    */
 }
 
 .modal--contactname {
   margin-left: 1em;
   font-size: 1.5em;
+  margin-bottom: -0.05em;
   color: #312E2E;
 }
 
 .modal--close {
   position: absolute;
-  right: 0em;
-  top: 5em;
-  width: 32px;
-  height: 32px;
-  opacity: 1;
+  left: 21.3em;
+  top: 1em;
+  width: 2em;
+  height: 2em;
+}
+
+.modal--close:before {
+  position: absolute;
+  left: 15px;
+  content: " ";
+  height: 33px;
+  width: 3px;
+  background-color: #fff;
+}
+
+.modal--close:after {
+  position: absolute;
+  left: 15px;
+  content: " ";
+  height: 33px;
+  width: 3px;
+  background-color: #fff;
+}
+
+.modal--close:before {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.modal--close:after {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
 }
 
 .modal__contact--pos {
@@ -113,5 +114,6 @@
   background-color: #901C1C;
   border: none;
   border-radius: 5px;
+  margin-top: 1.5em;
 }
 /*# sourceMappingURL=main.css.map */
