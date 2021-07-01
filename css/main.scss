@@ -18,6 +18,8 @@ $textmodal: #312E2E;
 
 .photographers__line {
 
+    display: flex;
+    justify-content: space-between;
     &--profilelink {
         border-radius: 50%;
     }
