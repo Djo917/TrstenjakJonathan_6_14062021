@@ -9,7 +9,6 @@ $background: #FAFAFA;
 $classicblack: black;
 $textmodal: #312E2E;
 
-
 .banner {
     &--logo {
         width: 15em;
@@ -17,11 +16,15 @@ $textmodal: #312E2E;
 }
 
 .photographers__line {
-
+    
     display: flex;
     justify-content: space-between;
+    max-width: 1200px;
+
+
     &--profilelink {
         border-radius: 50%;
+        width: 400px;
     }
     
     &--pictures {
@@ -45,5 +48,11 @@ $textmodal: #312E2E;
 
     &--price {
         color: $pricetext;
+    }
+}
+
+@media screen and  (max-width: 375px) {
+    .photographers__line {
+        flex-direction: column;
     }
 }

@@ -1,33 +1,6 @@
-.banner--logo {
-  width: 15em;
-}
-
-.photographers__line--profilelink {
+.photographers__nav--tag {
+  border: solid 1px;
   border-radius: 50%;
-}
-
-.photographers__line--pictures {
-  height: 10em;
-  width: 10em;
-  border-radius: 50%;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-
-.photographers__line--name {
-  color: #D3573C;
-}
-
-.photographers__line--location {
-  color: #901C1C;
-}
-
-.photographers__line--skills {
-  color: black;
-}
-
-.photographers__line--price {
-  color: #525252;
 }
 
 .modal {
@@ -115,5 +88,57 @@
   border: none;
   border-radius: 5px;
   margin-top: 1.5em;
+}
+
+.banner--logo {
+  width: 15em;
+}
+
+.photographers__line {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  max-width: 1200px;
+}
+
+.photographers__line--profilelink {
+  border-radius: 50%;
+  width: 400px;
+}
+
+.photographers__line--pictures {
+  height: 10em;
+  width: 10em;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.photographers__line--name {
+  color: #D3573C;
+}
+
+.photographers__line--location {
+  color: #901C1C;
+}
+
+.photographers__line--skills {
+  color: black;
+}
+
+.photographers__line--price {
+  color: #525252;
+}
+
+@media screen and (max-width: 375px) {
+  .photographers__line {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
 }
 /*# sourceMappingURL=main.css.map */
