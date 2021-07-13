@@ -1,6 +1,90 @@
-.photographers__nav {
-    &--tag {
-        border: solid 1px;
+$primarybackground: #901C1C;
+$primarytext: #D3573C;
+$secondarybackground: #D3573C;
+$secondarytext: #901C1C;
+$pricetext: #525252;
+$background: #FAFAFA;
+$classicblack: black;
+$textmodal: #312E2E;
+$bordertag: #C4C4C4;
+$fonts : 'DM Sans';
+
+.fontstyle {
+    font-family: $fonts;
+}
+
+.fontweight4 {
+    font-weight: 400;
+}
+
+.photographers__banner {
+    height: 15em;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: $background;
+
+    &--details {
+        margin-top: 2em;
+    }
+
+    &--pictures {
+        height: 10em;
+        width: 10em;
         border-radius: 50%;
+        object-fit: cover;
+        margin-top: 1em;
+        margin-right: 4em;
     }
 }
+
+.photographers__contact {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 1em;
+
+    &--name {
+        color: $primarytext
+    }
+}
+
+.margin {
+    margin-left: 1em;
+}
+
+.photographers__button {
+    &--submit {
+        height: 3.5em;
+        width: 10em;
+        color: white;
+        background-color: $primarybackground;
+        border: none;
+        border-radius: 5px;
+        margin-top: 1em;
+    }
+}
+
+.photographers__nav {
+    
+    display: flex;
+    margin-left: 1em;
+
+    &--link {
+        text-decoration: none;
+        color: $secondarytext;
+        margin-right: 1em;
+        width: 4.5em;
+        border: solid 0.5px $bordertag;
+        border-radius: 2em;
+    }
+
+    &--tag {
+        margin-left: 0.5em;
+        margin-right: 1em;
+    }
+}
+
+
+

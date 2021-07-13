@@ -8,51 +8,147 @@ $pricetext: #525252;
 $background: #FAFAFA;
 $classicblack: black;
 $textmodal: #312E2E;
+$bordertag: #C4C4C4;
 
 .banner {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
     &--logo {
         width: 15em;
     }
-}
 
-.photographers__line {
-    
-    display: flex;
-    justify-content: space-between;
-    max-width: 1200px;
-
-
-    &--profilelink {
-        border-radius: 50%;
-        width: 400px;
-    }
-    
-    &--pictures {
-        height: 10em;
-        width: 10em;
-        border-radius: 50%;
-        object-fit: cover;
-    }
-
-    &--name {
-        color: $primarytext
-    }
-
-    &--location {
+    &--title {
         color: $secondarytext;
     }
 
-    &--skills {
-        color: $classicblack;
-    }
-
-    &--price {
-        color: $pricetext;
+    &__navigation--link {
+        text-decoration: none;
+        color: $secondarytext;
+        margin-right: 1em;
+        width: 5em;
+        border: solid 0.5px $bordertag;
+        border-radius: 2em;
     }
 }
 
-@media screen and  (max-width: 375px) {
+.photographers {
+
+    margin-top: 5em;
+
+    &--redirect {
+        height: 1.5em;
+        width: 10em;
+        border-radius: 0.5em;
+        background-color: #DB8876;
+        text-decoration: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 0.5em;
+        left: calc((100% - 10em) / 2);
+        font-size: 1em;
+        font-weight: bold;
+        color: black;
+        z-index: 500;
+    }
+
+    &__line {
+    
+        display: flex;
+        max-width: 1200px;
+    
+        &--profile {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        }
+        &--profilelink {
+            text-decoration: none;
+            border-radius: 50%;
+            width: 400px;
+        }
+        
+        &--pictures {
+            height: 10em;
+            width: 10em;
+            border-radius: 50%;
+            object-fit: covesr;
+        }
+    
+        &--name {
+
+            color: $primarytext
+        }
+    
+        &--location {
+            color: $secondarytext;
+        }
+    
+        &--skills {
+            color: $classicblack;
+        }
+    
+        &--price {
+            color: $pricetext;
+        }
+    }
+}
+
+.margin--details {
+    margin-bottom: 0em;
+}
+
+.photographerstag {
+    margin-top: 0.5em;
+    &__link {
+        text-decoration: none;
+        color: $secondarytext;
+        margin-right: 1em;
+        width: 5em;
+        border: solid 0.5px $bordertag;
+        border-radius: 2em;
+    }
+}
+
+@media screen and (max-width: 375px) {
     .photographers__line {
-        flex-direction: column;
+        display: flex;
+        justify-content: center;
+
+        &--profile {
+            text-align: center;
+        }
+    }
+
+    .photographers--redirect {
+        display: none;
+    }
+
+    .banner {
+        justify-content: center;
+        flex-wrap: wrap;
+
+        &__navigation {
+            margin-left: 1.5em;
+            order: 3;
+
+            &--title {
+                order: 2;
+            }
+        }
+
+        &--logo {
+            width: 35%;
+            margin-left: 1.5em;
+        }
+        &--title {
+            position: absolute;
+            top: 0em;
+            right: 1.5em;
+            font-size: 1em;
+        }
     }
 }

@@ -4,52 +4,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
     <link rel="icon" type="image/svg+xml" href="media/favicon.jpg">
     <link rel="shortcut icon" type="image/png" href="images/logo.ico"/>
     <script type="text/javascript" src="js/indexpage.class.js"></script>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
-    
+        
     <title>Fisheye</title>
 </head>
 
 <body>
 
-    <header class="banner">
+    <header class="banner__photographers">
         <a class="banner--link" href="index.html" title="Logo Fisheye et lien vers la page d'accueil">
             <img class="banner--logo" src="media/logo_fisheye.png" alt="image du logo fisheye">
         </a>
     </header>
 
     <section class="photographers__banner">
+
+        <div class="photographers__banner--details">
+            
+            <div class="photographers__contact">
+                <h2 class="photographers__contact--name fontstyle fontweight4">Mimi Keel</h2>
+
+                <div class ="photographers__button">
+                    <input
+                        class="photographers__button--submit fontstyle"
+                        type="submit"
+                        id="btnsubmit"
+                        value="Contactez-moi"
+                    />
+                </div>
+            </div>
+
+            <h3 class="photographers__line--location margin fontstyle fontweight4">London, UK</h3>
+            <p class="photographers__line--skills margin fontstyle fontweight4">Voir le beau dans le quotidien</p>
+
+            <nav class="photographers__nav">
+                <a href="#" class="photographers__nav--link">
+                    <span class="photographers__nav--tag fontstyle">#portrait</span>
+                </a>
+
+                <a href="#" class="photographers__nav--link">
+                    <span class="photographers__nav--tag fontstyle">#events</span>
+                </a>
+
+                <a href="#" class="photographers__nav--link">
+                    <span class="photographers__nav--tag fontstyle">#travel</span>
+                </a>
+
+                <a href="#" class="photographers__nav--link">
+                    <span class="photographers__nav--tag fontstyle">#animals</span>
+                </a>
+            </nav>
+        </div>
+
         <img 
-            class="photographers__line--pictures" 
+            class="photographers__banner--pictures" 
             src="media/sample_photos/Mimi/Portrait_Nora.jpg"
             alt ="photo de profile Mimi Keel"
         >
-
-        <div class="photographers__banner--details">
-            <h2 class="photographers__line--name">Mimi Keel</h2>
-            <h3 class="photographers__line--location">London, UK</h3>
-            <p class="photographers__line--skills">Voir le beau dans le quotidien</p>
-        </div>
-
-        <nav class="photographers__nav">
-            <span class="photographers__nav--tag">#portrait</span>
-            <span class="photographers__nav--tag">#events</span>
-            <span class="photographers__nav--tag">#travel</span>
-            <span class="photographers__nav--tag">#animals</span>
-        </nav>
-
-        <div class ="modal__contact--btn modal__contact--pos">
-            <input
-                class="modal__contact--btnsubmit"
-                type="submit"
-                id="btnsubmit"
-                value="Contactez-moi"
-            />
-        </div>
-
     </section>
+
+    <nav class="menu">
+    <span menu--text>Trier par</span>
+        <ul>
+            <li class="menu__button">
+                <a href="#">Popularité</a>
+                <ul class="menu__button--scrolling">
+                    <li><a href="#">Date</a></li>
+                    <li><a href="#">Titre</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
 </body>
 </html>
