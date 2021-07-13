@@ -9,6 +9,14 @@ $textmodal: #312E2E;
 $bordertag: #C4C4C4;
 $fonts : 'DM Sans';
 
+body {
+    padding: 2em;
+}
+
+.width {
+    max-width: 1280px;
+}
+
 .fontstyle {
     font-family: $fonts;
 }
@@ -18,43 +26,57 @@ $fonts : 'DM Sans';
 }
 
 .photographers__banner {
-    height: 15em;
-    width: 100%;
+    height: 22em;
+    width: 95%;
     display: flex;
     justify-content: space-between;
     background-color: $background;
-
-    &--details {
-        margin-top: 2em;
-    }
-
-    &--pictures {
-        height: 10em;
-        width: 10em;
-        border-radius: 50%;
-        object-fit: cover;
-        margin-top: 1em;
-        margin-right: 4em;
-    }
 }
 
-.photographers__contact {
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-left: 1em;
+.photographers__details {
+    padding-left: 1em;
 
     &--name {
-        color: $primarytext
+        height: 1em;
+        color: $primarytext;
+        font-size: 64px;
+    }
+
+    &--location {
+        color: $secondarytext;
+        font-size: 24px;
+    }
+
+    &--skills {
+        color: $pricetext;
+        font-size: 18px;
     }
 }
 
-.margin {
-    margin-left: 1em;
+.photographers__nav {
+    
+    display: flex;
+
+    &--link {
+        text-decoration: none;
+        color: $secondarytext;
+        margin-right: 1em;
+        width: 5.5em;
+        border: solid 0.5px $bordertag;
+        border-radius: 2em;
+    }
+
+    &--tag {
+        margin-left: 0.5em;
+        margin-right: 0.5em;
+        font-size: 18px;
+    }
 }
 
 .photographers__button {
+
+    padding-top: 2em;
+
     &--submit {
         height: 3.5em;
         width: 10em;
@@ -63,27 +85,21 @@ $fonts : 'DM Sans';
         border: none;
         border-radius: 5px;
         margin-top: 1em;
+        font-weight: 700;
+        font-size: 20px;
     }
 }
 
-.photographers__nav {
-    
-    display: flex;
-    margin-left: 1em;
-
-    &--link {
-        text-decoration: none;
-        color: $secondarytext;
-        margin-right: 1em;
-        width: 4.5em;
-        border: solid 0.5px $bordertag;
-        border-radius: 2em;
-    }
-
-    &--tag {
-        margin-left: 0.5em;
-        margin-right: 1em;
-    }
+.photographers__picture {
+    padding-top: 1.2em;
+    &--size {
+        height: 13em;
+        width: 13em;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-top: 1em;
+        margin-right: 4em;
+        }
 }
 
 

@@ -23,63 +23,63 @@
         </a>
     </header>
 
-    <section class="photographers__banner">
+    <main class="width">
+        <section class="photographers__banner">
 
-        <div class="photographers__banner--details">
-            
-            <div class="photographers__contact">
-                <h2 class="photographers__contact--name fontstyle fontweight4">Mimi Keel</h2>
+            <div class="photographers__details">
+                <h1 class="photographers__details--name fontstyle margin fontweight4">Mimi Keel</h1>
+                <h2 class="photographers__details--location margin fontstyle fontweight4">London, UK</h2>
+                <p class="photographers__details--skills margin fontstyle fontweight4">Voir le beau dans le quotidien</p>
 
-                <div class ="photographers__button">
-                    <input
-                        class="photographers__button--submit fontstyle"
-                        type="submit"
-                        id="btnsubmit"
-                        value="Contactez-moi"
-                    />
-                </div>
+                <nav class="photographers__nav">
+                    <a href="#" class="photographers__nav--link">
+                        <span class="photographers__nav--tag fontstyle">#portrait</span>
+                    </a>
+
+                    <a href="#" class="photographers__nav--link">
+                        <span class="photographers__nav--tag fontstyle">#events</span>
+                    </a>
+
+                    <a href="#" class="photographers__nav--link">
+                        <span class="photographers__nav--tag fontstyle">#travel</span>
+                    </a>
+
+                    <a href="#" class="photographers__nav--link">
+                        <span class="photographers__nav--tag fontstyle">#animals</span>
+                    </a>
+                </nav>
             </div>
 
-            <h3 class="photographers__line--location margin fontstyle fontweight4">London, UK</h3>
-            <p class="photographers__line--skills margin fontstyle fontweight4">Voir le beau dans le quotidien</p>
+            <div class ="photographers__button">
+                <input
+                    class="photographers__button--submit fontstyle"
+                    type="submit"
+                    id="btnsubmit"
+                    value="Contactez-moi"
+                />
+            </div>
 
-            <nav class="photographers__nav">
-                <a href="#" class="photographers__nav--link">
-                    <span class="photographers__nav--tag fontstyle">#portrait</span>
-                </a>
+            <div class="photographers__picture">
+                <img 
+                    class="photographers__picture--size" 
+                    src="media/sample_photos/Mimi/Portrait_Nora.jpg"
+                    alt ="photo de profile Mimi Keel"
+                >
+            </div>
+        </section>
 
-                <a href="#" class="photographers__nav--link">
-                    <span class="photographers__nav--tag fontstyle">#events</span>
-                </a>
-
-                <a href="#" class="photographers__nav--link">
-                    <span class="photographers__nav--tag fontstyle">#travel</span>
-                </a>
-
-                <a href="#" class="photographers__nav--link">
-                    <span class="photographers__nav--tag fontstyle">#animals</span>
-                </a>
-            </nav>
-        </div>
-
-        <img 
-            class="photographers__banner--pictures" 
-            src="media/sample_photos/Mimi/Portrait_Nora.jpg"
-            alt ="photo de profile Mimi Keel"
-        >
-    </section>
-
-    <nav class="menu">
-    <span menu--text>Trier par</span>
-        <ul>
-            <li class="menu__button">
-                <a href="#">Popularité</a>
-                <ul class="menu__button--scrolling">
-                    <li><a href="#">Date</a></li>
-                    <li><a href="#">Titre</a></li>
-                </ul>
-            </li>
-        </ul>
-    </nav>
+        <nav class="menu">
+        <span menu--text>Trier par</span>
+            <ul>
+                <li class="menu__button">
+                    <a href="#">Popularité</a>
+                    <ul class="menu__button--scrolling">
+                        <li><a href="#">Date</a></li>
+                        <li><a href="#">Titre</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </main>
 </body>
 </html>
