@@ -27,7 +27,7 @@ body {
 
 .photographers__banner {
     height: 22em;
-    width: 95%;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     background-color: $background;
@@ -91,16 +91,69 @@ body {
 }
 
 .photographers__picture {
+
     padding-top: 1.2em;
+
     &--size {
-        height: 13em;
-        width: 13em;
+        height: 15em;
+        width: 15em;
         border-radius: 50%;
         object-fit: cover;
         margin-top: 1em;
         margin-right: 4em;
-        }
+    }
 }
+
+
+/* Menu déroulant */
+ .menu {
+     position: sticky;
+     top: 0px;
+     display: flex;
+     align-items: center;
+ }
+
+ nav ul {
+     list-style-type: none;
+ }
+
+ nav a {
+     text-decoration: none;
+     color: white;
+     font-family: 'DM Sans';
+ }
+
+ .menu--scrolling {
+     display: none;
+
+ }
+
+ .menu--scrolling li {
+    float: none;
+    width: 100%;
+    text-align: left;
+    height: 3em;
+    width: 8em;
+    background-color: $primarybackground;
+ }
+
+ nav > ul li:hover .menu--scrolling {
+     display: block;
+ }
+
+.menu__nav {
+    text-align: center;
+    height: 3em;
+    width: 8em;
+    border-bottom: none;
+    background-color: $primarybackground;
+    border-radius: 0.3em;
+
+    & a {
+        vertical-align: text-top;
+    }
+}
+
 
 
 
