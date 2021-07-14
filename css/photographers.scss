@@ -153,7 +153,18 @@ body {
         vertical-align: text-top;
     }
 }
+/* Fin menu déroulant */
 
+.content {
+    display: flex;
+    justify-content: space-between;
+}
+.content__vignettes {
 
-
-
+    &--pictures {
+        object-fit: cover;
+        height: 18em;
+        width: 25em;
+        border-radius: 0.5em;
+    }
+}
