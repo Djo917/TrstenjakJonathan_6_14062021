@@ -1,3 +1,5 @@
+import { View } from './view.class.js';
+import { Ajax } from '/lib/ajax.class.js';
 /*
 let width = document.getElementsByClassName("photographers__line");
 
@@ -6,9 +8,10 @@ if(width.value.clientWidth > "1280") {
 }
 */
 
+
 class IndexPage {
-    constructor() {
-        this.view = new View();
+    constructor(view) {
+        this.view = view;
     }
     run() {
         this.showAllPhotographers();
@@ -24,5 +27,10 @@ class IndexPage {
     }
 }
 
-const indexPage = new IndexPage();
+
+const indexPage = new IndexPage(new View());
 indexPage.run();
+
+fetch("data/FishEyeData.json")
+    .then(dataPhotographes => dataPhotographes.json())
+    .then(dataPhotographes => console.table(dataPhotographes))
