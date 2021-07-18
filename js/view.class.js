@@ -1,13 +1,8 @@
-
+import { Ajax } from '/lib/ajax.class.js';
 
 export class View {
     renderAllPhotographers() {
-        fetch("data/FishEyeData.json")
-        .then(dataPhotographes => dataPhotographes.json())
-
-        for(let i of photographers) {
-            console.log(i);
-        }
+        fetchData(FishEyeData.json)
     }
 
     renderAllTags() {

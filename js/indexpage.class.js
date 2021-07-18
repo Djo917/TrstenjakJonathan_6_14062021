@@ -20,6 +20,7 @@ class IndexPage {
 
     showAllPhotographers() {
         this.view.renderAllPhotographers();
+        
     }
 
     showTags() {
@@ -33,4 +34,6 @@ indexPage.run();
 
 fetch("data/FishEyeData.json")
     .then(dataPhotographes => dataPhotographes.json())
-    .then(dataPhotographes => console.table(dataPhotographes))
+    .then(dataPhotographes => console.log(JSON.stringify(dataPhotographes.photographers[0].name)))  
+    .then(dataPhotographes => console.log(dataPhotographes.photographers[0].name))
+    .catch(error => console.log(error));
