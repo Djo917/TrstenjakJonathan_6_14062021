@@ -19,18 +19,28 @@ class IndexPage {
     }
 
     showAllPhotographers() {
-        this.view.renderAllPhotographers();
         
+        const datas = this.Ajax.fetchData();
+        console.log(datas);
+        this.view.renderAllPhotographers(datas);
+
     }
 
     showTags() {
         this.view.renderAllTags();
     }
+
 }
+
+
 
 
 const indexPage = new IndexPage(new View());
 indexPage.run();
+
+const testAjax = new IndexPage(new Ajax());
+testAjax.run();
+
 
 fetch("data/FishEyeData.json")
     .then(dataPhotographes => dataPhotographes.json())
