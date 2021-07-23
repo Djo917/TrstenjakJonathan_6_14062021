@@ -10,8 +10,9 @@ if(width.value.clientWidth > "1280") {
 
 
 class IndexPage {
-    constructor(view) {
+    constructor(view, ajax) {
         this.view = view;
+        this.ajax = ajax;
     }
     run() {
         this.showAllPhotographers();
@@ -19,11 +20,11 @@ class IndexPage {
     }
 
     showAllPhotographers() {
-        const ajax = new Ajax('/data/FishEyeData.json');
-        const datas = ajax.fetchData();
-        console.log(datas);
-        this.view.renderAllPhotographers(datas);
+        const datas = this.ajax.fetchData();
 
+        datas.then(data => {
+            this.view.renderAllPhotographers(data.photographers);
+        })
     }
 
     showTags() {
@@ -35,14 +36,16 @@ class IndexPage {
 
 
 
-const indexPage = new IndexPage(new View());
+const indexPage = new IndexPage(new View(), new Ajax('/data/FishEyeData.json'));
 indexPage.run();
+
+
+
 
 
 
 
 // fetch("data/FishEyeData.json")
 //     .then(dataPhotographes => dataPhotographes.json())
-//     .then(dataPhotographes => console.log(JSON.stringify(dataPhotographes.photographers[0].name)))  
 //     .then(dataPhotographes => console.log(dataPhotographes.photographers[0].name))
 //     .catch(error => console.log(error));
