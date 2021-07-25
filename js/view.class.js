@@ -25,8 +25,9 @@ export class View {
             h3.classList.add("photographers__line--location", "margin--details");
             div.appendChild(p).innerText = photographer.tagline;
             p.classList.add("photographers__line--skills", "margin--details");
-            div.appendChild(pbis).innerText = photographer.price;
+            div.appendChild(pbis).innerText = photographer.price + '€/jour';
             pbis.classList.add("photographers__line--price", "margin--details");
+            
         });
 
     }
