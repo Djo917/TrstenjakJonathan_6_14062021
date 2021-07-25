@@ -21,6 +21,12 @@ export class View {
             img.classList.add("photographers__line--pictures");
             a.appendChild(h2).innerText = photographer.name;
             h2.classList.add("photographers__line--name");  
+            div.appendChild(h3).innerText = photographer.country;
+            h3.classList.add("photographers__line--location", "margin--details");
+            div.appendChild(p).innerText = photographer.tagline;
+            p.classList.add("photographers__line--skills", "margin--details");
+            div.appendChild(pbis).innerText = photographer.price;
+            pbis.classList.add("photographers__line--price", "margin--details");
         });
 
     }

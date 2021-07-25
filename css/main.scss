@@ -27,14 +27,16 @@ $bordertag: #C4C4C4;
         text-decoration: none;
         color: $secondarytext;
         margin-right: 1em;
-        width: 5em;
+        margin-bottom: 0.5em;
+        height: 1.3em;
         border: solid 0.5px $bordertag;
         border-radius: 2em;
     }
 }
 
 .photographers {
-
+    display: flex;
+    justify-content: center;
     margin-top: 5em;
 
     &--redirect {
@@ -58,12 +60,14 @@ $bordertag: #C4C4C4;
     &__line {
     
         display: flex;
+        flex-wrap: wrap;
         max-width: 1200px;
     
         &--profile {
             display: flex;
             flex-direction: column;
             text-align: center;
+            margin-bottom: 6em;
         }
         &--profilelink {
             text-decoration: none;
@@ -79,6 +83,7 @@ $bordertag: #C4C4C4;
         }
     
         &--name {
+            margin-bottom: 0em;
             color: $primarytext
         }
     
@@ -113,6 +118,9 @@ $bordertag: #C4C4C4;
 }
 
 @media screen and (max-width: 375px) {
+    body {
+        padding: 0em;
+    }
     .photographers__line {
         display: flex;
         justify-content: center;
@@ -127,19 +135,19 @@ $bordertag: #C4C4C4;
     }
 
     .banner {
-        justify-content: center;
-        flex-wrap: wrap;
 
         &__navigation {
-            margin-left: 1.5em;
-            order: 3;
-
-            &--title {
-                order: 2;
-            }
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 3em;
+            order: 3;               
         }
 
         &--logo {
+            position: absolute;
+            top: 0.5em;
+            left: 0em;
             width: 35%;
             margin-left: 1.5em;
         }

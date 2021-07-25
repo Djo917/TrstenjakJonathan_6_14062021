@@ -279,12 +279,19 @@ nav > ul li:hover .menu--scrolling {
   text-decoration: none;
   color: #901C1C;
   margin-right: 1em;
-  width: 5em;
+  margin-bottom: 0.5em;
+  height: 1.3em;
   border: solid 0.5px #C4C4C4;
   border-radius: 2em;
 }
 
 .photographers {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   margin-top: 5em;
 }
 
@@ -316,6 +323,8 @@ nav > ul li:hover .menu--scrolling {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   max-width: 1200px;
 }
 
@@ -328,6 +337,7 @@ nav > ul li:hover .menu--scrolling {
       -ms-flex-direction: column;
           flex-direction: column;
   text-align: center;
+  margin-bottom: 6em;
 }
 
 .photographers__line--profilelink {
@@ -345,6 +355,7 @@ nav > ul li:hover .menu--scrolling {
 }
 
 .photographers__line--name {
+  margin-bottom: 0em;
   color: #D3573C;
 }
 
@@ -378,6 +389,9 @@ nav > ul li:hover .menu--scrolling {
 }
 
 @media screen and (max-width: 375px) {
+  body {
+    padding: 0em;
+  }
   .photographers__line {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -392,25 +406,24 @@ nav > ul li:hover .menu--scrolling {
   .photographers--redirect {
     display: none;
   }
-  .banner {
+  .banner__navigation {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-  }
-  .banner__navigation {
-    margin-left: 1.5em;
+    margin-top: 3em;
     -webkit-box-ordinal-group: 4;
         -ms-flex-order: 3;
             order: 3;
   }
-  .banner__navigation--title {
-    -webkit-box-ordinal-group: 3;
-        -ms-flex-order: 2;
-            order: 2;
-  }
   .banner--logo {
+    position: absolute;
+    top: 0.5em;
+    left: 0em;
     width: 35%;
     margin-left: 1.5em;
   }
