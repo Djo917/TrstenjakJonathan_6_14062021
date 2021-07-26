@@ -37,8 +37,6 @@ export class View {
 
             div.appendChild(divTag);
             divTag.classList.add("photographerstag");
-
-            
             
             for (let i in photographer.tags) {
                 const linkTag = document.createElement("a");
@@ -51,7 +49,6 @@ export class View {
                 spanTag.classList.add("photographerstag__link--tag");
 
                 spanTag.innerText = '#' + photographer.tags[i];
-
             }   
         });
 
@@ -59,7 +56,6 @@ export class View {
 
     renderAllTags() {
         console.log("showTags");
-        // linkTag.innerText = photographer[i].tags;
     }
 
 }
