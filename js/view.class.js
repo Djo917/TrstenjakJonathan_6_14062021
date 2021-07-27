@@ -43,6 +43,7 @@ export class View {
                 const spanTag = document.createElement("span");
 
                 divTag.appendChild(linkTag);
+                linkTag.href = "#";
                 linkTag.classList.add("photographerstag__link");
 
                 linkTag.appendChild(spanTag);

@@ -9,6 +9,7 @@ $background: #FAFAFA;
 $classicblack: black;
 $textmodal: #312E2E;
 $bordertag: #C4C4C4;
+$onhover: #DB8876;
 
 .banner {
     display: flex;
@@ -31,6 +32,10 @@ $bordertag: #C4C4C4;
         height: 1.3em;
         border: solid 0.5px $bordertag;
         border-radius: 2em;
+
+        &:hover {
+            background-color: $onhover;
+        }
     }
 }
 
@@ -114,6 +119,9 @@ $bordertag: #C4C4C4;
         width: 5em;
         border: solid 0.5px $bordertag;
         border-radius: 2em;
+        &:hover {
+            background-color: $onhover;
+        }
     }
 }
 

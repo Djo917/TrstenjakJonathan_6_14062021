@@ -169,6 +169,7 @@ nav > ul li:hover .menu--scrolling {
   border-radius: 0.5em;
 }
 
+/* Début reponsive */
 .modal {
   height: 460px;
   width: 380px;
@@ -285,6 +286,10 @@ nav > ul li:hover .menu--scrolling {
   border-radius: 2em;
 }
 
+.banner__navigation--link:hover {
+  background-color: #DB8876;
+}
+
 .photographers {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -386,6 +391,10 @@ nav > ul li:hover .menu--scrolling {
   width: 5em;
   border: solid 0.5px #C4C4C4;
   border-radius: 2em;
+}
+
+.photographerstag__link:hover {
+  background-color: #DB8876;
 }
 
 @media screen and (max-width: 375px) {
