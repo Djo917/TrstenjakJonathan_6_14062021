@@ -167,3 +167,13 @@ $onhover: #DB8876;
         }
     }
 }
+
+@media screen and (max-width: 881px) {
+    .photographers__line {
+        justify-content: center;
+    }
+
+    .banner {
+        flex-wrap: wrap;
+    }
+}

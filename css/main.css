@@ -443,4 +443,16 @@ nav > ul li:hover .menu--scrolling {
     font-size: 1em;
   }
 }
+
+@media screen and (max-width: 881px) {
+  .photographers__line {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .banner {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+}
 /*# sourceMappingURL=main.css.map */
