@@ -17,6 +17,7 @@ class IndexPage {
     run() {
         this.showAllPhotographers();
         this.showTags();
+        this.showLikes();
     }
 
     showAllPhotographers() {
@@ -31,9 +32,24 @@ class IndexPage {
         this.view.renderAllTags();
     }
 
+    showLikes () {
+        const datasLikes = this.ajax.fetchData();
+
+        datasLikes.then(dataLikes => {
+            this.view.renderLikes(dataLikes.media);
+        })
+    }
 }
 
+// const redirectUp = () => {
+    
+// }
 
+// const showLike = () => {
+//     const buttonLike = document.querySelector("content__describe");
+
+
+// }
 
 
 const indexPage = new IndexPage(new View(), new Ajax('/data/FishEyeData.json'));

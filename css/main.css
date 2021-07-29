@@ -257,6 +257,10 @@ nav > ul li:hover .menu--scrolling {
   margin-top: 1.5em;
 }
 
+body {
+  min-width: 300px;
+}
+
 .banner {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -453,6 +457,12 @@ nav > ul li:hover .menu--scrolling {
   .banner {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .banner--title {
+    right: -1.5em;
   }
 }
 /*# sourceMappingURL=main.css.map */

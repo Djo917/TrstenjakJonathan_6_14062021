@@ -11,6 +11,9 @@ $textmodal: #312E2E;
 $bordertag: #C4C4C4;
 $onhover: #DB8876;
 
+body {
+    min-width: 300px;
+}
 .banner {
     display: flex;
     justify-content: space-around;
@@ -175,5 +178,11 @@ $onhover: #DB8876;
 
     .banner {
         flex-wrap: wrap;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    .banner--title {
+        right: -1.5em;
     }
 }

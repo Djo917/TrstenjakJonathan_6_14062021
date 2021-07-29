@@ -11,7 +11,11 @@ export class View {
             const p = document.createElement("p");
             const pbis = document.createElement("p");  
             const divTag = document.createElement("div");
-            
+            let priceEuro = new Intl.NumberFormat('fr-FR', {
+                style: 'currency',
+                currency: 'EUR',
+                minimumFractionDigits: 2
+            });
 
             idSection.appendChild(div);
             div.classList.add("photographers__line--profile");
@@ -32,13 +36,13 @@ export class View {
             
             div.appendChild(p).innerText = photographer.tagline;
             p.classList.add("photographers__line--skills", "margin--details");
-            div.appendChild(pbis).innerText = photographer.price + '€/jour';
+            div.appendChild(pbis).innerText = priceEuro.format(photographer.price) + '/jour';
             pbis.classList.add("photographers__line--price", "margin--details");
 
             div.appendChild(divTag);
             divTag.classList.add("photographerstag");
-            
-            for (let i in photographer.tags) {
+
+            photographer.tags.forEach(tag =>  {
                 const linkTag = document.createElement("a");
                 const spanTag = document.createElement("span");
 
@@ -49,14 +53,24 @@ export class View {
                 linkTag.appendChild(spanTag);
                 spanTag.classList.add("photographerstag__link--tag");
 
-                spanTag.innerText = '#' + photographer.tags[i];
-            }   
+                spanTag.innerText = '#' + tag;
+            }) 
         });
-
     }
 
     renderAllTags() {
         console.log("showTags");
+    }
+
+    renderLikes(media) {
+        // console.log(media[0].likes);
+        const buttonLike = document.getElementsById("testlikes");
+            console.log(buttonLike);
+        media.forEach(mediaLikes => {
+            console.log(media[0].likes);
+            
+            buttonLike.innerHTML = mediaLikes[0].likes + "❤️";
+        });
     }
 
 }
