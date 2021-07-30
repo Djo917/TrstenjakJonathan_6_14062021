@@ -40,6 +40,10 @@ body {
             background-color: $onhover;
         }
     }
+
+    &__navigation--tag {
+        text-transform: capitalize;
+    }
 }
 
 .photographers {

@@ -294,6 +294,10 @@ body {
   background-color: #DB8876;
 }
 
+.banner__navigation--tag {
+  text-transform: capitalize;
+}
+
 .photographers {
   display: -webkit-box;
   display: -ms-flexbox;

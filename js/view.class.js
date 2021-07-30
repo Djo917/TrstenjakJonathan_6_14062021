@@ -72,12 +72,13 @@ export class View {
             return uniqueTags;
         }
 
-        let getTags = new Set(returnTags(tags));     
+        let getTags = [...new Set(returnTags(tags))];   
+        getTags.sort();
+        
         console.log(getTags);
 
         getTags.forEach(tagsNavigation => {
             
-            console.log(tagsNavigation);
             const idNav = document.getElementById("navmenu");
             const a = document.createElement("a");
             const span = document.createElement("span");
