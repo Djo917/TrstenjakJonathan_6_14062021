@@ -17,7 +17,7 @@ class IndexPage {
     run() {
         this.showAllPhotographers();
         this.showTags();
-        this.showLikes();
+        // this.showLikes();
     }
 
     showAllPhotographers() {
@@ -29,16 +29,21 @@ class IndexPage {
     }
 
     showTags() {
-        this.view.renderAllTags();
-    }
+        const datas = this.ajax.fetchData();
 
-    showLikes () {
-        const datasLikes = this.ajax.fetchData();
-
-        datasLikes.then(dataLikes => {
-            this.view.renderLikes(dataLikes.media);
+        datas.then(data => {
+            this.view.renderAllTags(data.photographers);
         })
+        
     }
+
+    // showLikes () {
+    //     const datasLikes = this.ajax.fetchData();
+
+    //     datasLikes.then(dataLikes => {
+    //         this.view.renderLikes(dataLikes.media);
+    //     })
+    // }
 }
 
 // const redirectUp = () => {

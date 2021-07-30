@@ -11,7 +11,9 @@ export class View {
             const p = document.createElement("p");
             const pbis = document.createElement("p");  
             const divTag = document.createElement("div");
-            let priceEuro = new Intl.NumberFormat('fr-FR', {
+            
+            let priceEuro = new Intl.NumberFormat('fr-FR', { /* Formate le prix en fonction du local */
+
                 style: 'currency',
                 currency: 'EUR',
                 minimumFractionDigits: 2
@@ -58,20 +60,46 @@ export class View {
         });
     }
 
-    renderAllTags() {
-        console.log("showTags");
+    renderAllTags(tags) {
+        
+        let returnTags = (tags) => {
+        
+            const uniqueTags = [];
+            
+            for (let i in tags) {
+                tags[i].tags.forEach(tag => uniqueTags.push(tag));    
+            }
+            return uniqueTags;
+        }
+
+        let getTags = new Set(returnTags(tags));     
+        console.log(getTags);
+
+        getTags.forEach(tagsNavigation => {
+            
+            console.log(tagsNavigation);
+            const idNav = document.getElementById("navmenu");
+            const a = document.createElement("a");
+            const span = document.createElement("span");
+
+            idNav.appendChild(a);
+            a.classList.add("banner__navigation--link");
+
+            a.appendChild(span).innerText = '#' + tagsNavigation;
+            span.classList.add("banner__navigation--tag");
+        })
     }
 
-    renderLikes(media) {
-        // console.log(media[0].likes);
-        const buttonLike = document.getElementsById("testlikes");
-            console.log(buttonLike);
-        media.forEach(mediaLikes => {
-            console.log(media[0].likes);
+    // renderLikes(media) {
+    //     // console.log(media[0].likes);
+    //     const buttonLike = document.getElementsById("testlikes");
+    //         console.log(buttonLike);
+    //     media.forEach(mediaLikes => {
+    //         console.log(media[0].likes);
             
-            buttonLike.innerHTML = mediaLikes[0].likes + "❤️";
-        });
-    }
+    //         buttonLike.innerHTML = mediaLikes[0].likes + "❤️";
+    //     });
+    // }
 
 }
 export default View;
