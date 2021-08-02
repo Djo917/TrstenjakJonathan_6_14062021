@@ -19,6 +19,7 @@ class IndexPage {
         this.showTags();
         // this.showLikes();
         this.showPhotographerPage();
+        this.filterTag();
     }
 
     showAllPhotographers() {
@@ -42,6 +43,14 @@ class IndexPage {
 
         datas.then(data => {
             this.view.towardsPhotographer(data.photographers);
+        })
+    }
+
+    filterTag() {
+        const datas = this.ajax.fetchData();
+
+        datas.then(data => {
+            this.view.filterTag(data.photographers);
         })
     }
 
@@ -69,16 +78,3 @@ class IndexPage {
 
 const indexPage = new IndexPage(new View(), new Ajax('/data/FishEyeData.json'));
 indexPage.run();
-
-// const id = window.location.href;
-
-
-
-
-
-
-
-// fetch("data/FishEyeData.json")
-//     .then(dataPhotographes => dataPhotographes.json())
-//     .then(dataPhotographes => console.log(dataPhotographes.photographers[0].name))
-//     .catch(error => console.log(error));
