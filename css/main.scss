@@ -113,10 +113,6 @@ body {
     }
 }
 
-.hidden {
-    display: flex;
-}
-
 .margin--details {
     margin-bottom: 0em;
 }
@@ -124,6 +120,7 @@ body {
 .photographerstag {
     margin-top: 0.5em;
     &__link {
+        text-transform: capitalize;
         text-decoration: none;
         color: $secondarytext;
         margin-right: 1em;

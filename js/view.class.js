@@ -144,15 +144,13 @@ export class View {
         const tagUrl = window.location.search.substr(1);
 
         const profilTagged = photographers.filter(t => t.tags.includes(tagUrl));
-
-        const hide = document.querySelectorAll(".hidden");
-
-        hide.forEach((hideThemAll) => {
-            hideThemAll.style.display = 'none';
-        })
-         
+        
         profilTagged.forEach(photographersTagged => {
-                
+            const hide = document.querySelectorAll(".hidden");
+
+            hide.forEach((hideThemAll) => {
+                hideThemAll.style.display = 'none';
+            })   
             const idSection = document.getElementById("photographers");
             const div = document.createElement("div");
             const a = document.createElement("a");
