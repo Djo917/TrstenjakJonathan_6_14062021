@@ -20,7 +20,7 @@ export class View {
             });
 
             idSection.appendChild(div);
-            div.classList.add("photographers__line--profile");
+            div.classList.add("photographers__line--profile", "hidden");
 
             div.appendChild(a);
             a.href = "photographer.html?" + photographer.id;
@@ -105,7 +105,6 @@ export class View {
         const p = document.createElement("p");
         const divPictures = document.createElement("div")
         const profilPictures = document.createElement("img");
-        
 
         idSection.prepend(idDiv);
         idDiv.classList.add("photographers__details");
@@ -143,13 +142,17 @@ export class View {
 
     filterTag(photographers) {
         const tagUrl = window.location.search.substr(1);
-        // console.log(tagUrl); 
 
         const profilTagged = photographers.filter(t => t.tags.includes(tagUrl));
-        // console.log(profilTagged);
 
+        const hide = document.querySelectorAll(".hidden");
+
+        hide.forEach((hideThemAll) => {
+            hideThemAll.style.display = 'none';
+        })
+         
         profilTagged.forEach(photographersTagged => {
-            console.log(photographersTagged);
+                
             const idSection = document.getElementById("photographers");
             const div = document.createElement("div");
             const a = document.createElement("a");
@@ -159,7 +162,7 @@ export class View {
             const p = document.createElement("p");
             const pbis = document.createElement("p");  
             const divTag = document.createElement("div");
-            
+
             let priceEuro = new Intl.NumberFormat('fr-FR', { /* Formate le prix en fonction du local */
 
                 style: 'currency',
@@ -204,7 +207,7 @@ export class View {
                 spanTag.classList.add("photographerstag__link--tag");
 
                 spanTag.innerText = '#' + tag;
-            }) 
+            })
         })
         
     }

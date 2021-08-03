@@ -384,6 +384,12 @@ body {
   color: #525252;
 }
 
+.hidden {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 .margin--details {
   margin-bottom: 0em;
 }
