@@ -16,7 +16,7 @@ export class View {
 
                 style: 'currency',
                 currency: 'EUR',
-                minimumFractionDigits: 2
+                minimumFractionDigits: 0
             });
 
             idSection.appendChild(div);
@@ -83,8 +83,9 @@ export class View {
             const span = document.createElement("span");
 
             idNav.appendChild(a);
-            a.href= "index.html?" + tagsNavigation;
+            a.href= "#";
             a.classList.add("banner__navigation--link");
+            a.id = tagsNavigation;
 
             a.appendChild(span).innerText = '#' + tagsNavigation;
             span.classList.add("banner__navigation--tag");
@@ -123,7 +124,7 @@ export class View {
             const idNav = document.getElementById("navmenu");
             const a = document.createElement("a");
             const span = document.createElement("span");
-
+            
             idNav.appendChild(a);
             a.href="#";
             a.classList.add("photographers__nav--link");
@@ -165,7 +166,7 @@ export class View {
 
                 style: 'currency',
                 currency: 'EUR',
-                minimumFractionDigits: 2
+                minimumFractionDigits: 0
             });
 
             idSection.appendChild(div);
