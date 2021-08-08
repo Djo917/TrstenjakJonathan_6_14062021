@@ -31,18 +31,22 @@ class IndexPage {
                 }
 
             else {
-                console.log(data.photographers);
-                const yolo = data.photographers;
-                const isTagged = yolo.filter(t => t.tags.includes(filtreTags));
-                console.log(isTagged);
-
-                if(data.photographers.filter(t => t.tags.includes(filtreTags))) {
-                    console.log("yolo");
-                }
-            
-            //sinon filtrer dataphotographer renvoi tag sélectionnés
+                data.photographers.forEach(photographersTagged => {
+                    
+                    console.log(filtreTags);
+                    
+                    for(let i in photographersTagged.tags) {
+                        // console.log(tags);
+                        if(photographersTagged.tags[i] == filtreTags[i]) {
+                            console.log("yolo");
+                        }
+                    }
+                })
             }
+
+            //sinon filtrer dataphotographer renvoi tag sélectionnés
         })
+
     }
 
     showTags() {
