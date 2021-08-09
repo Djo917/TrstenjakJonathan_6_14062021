@@ -26,25 +26,22 @@ class IndexPage {
         
         datas.then(data => {
             
+            let photographersFiltre = [];
+
             if(filtreTags === undefined) {
                 this.view.renderAllPhotographers(data.photographers);
                 }
 
             else {
-                data.photographers.forEach(photographersTagged => {
-                    
-                    console.log(filtreTags);
-                    
-                    for(let i in photographersTagged.tags) {
-                        // console.log(tags);
-                        if(photographersTagged.tags[i] == filtreTags[i]) {
-                            console.log("yolo");
-                        }
-                    }
-                })
+                
+               console.log(filtreTags);
+               
+               filtreTags.forEach(tags => {
+                    console.log(data.photographers);
+                    photographersFiltre.push(data.photographers.filter(t => t.tags.includes('animals')));
+               });
+               this.view.renderAllPhotographers(data.photographersFiltre);
             }
-
-            //sinon filtrer dataphotographer renvoi tag sélectionnés
         })
 
     }
