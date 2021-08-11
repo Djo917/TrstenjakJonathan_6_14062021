@@ -1,13 +1,5 @@
 import { View } from './view.class.js';
 import { Ajax } from '/lib/ajax.class.js';
-/*
-let width = document.getElementsByClassName("photographers__line");
-
-if(width.value.clientWidth > "1280") {
-    photographers__line.style.flex-wrap: wrap;
-}
-*/
-
 
 class IndexPage {
     constructor(view, ajax) {
@@ -17,8 +9,8 @@ class IndexPage {
     run() {
         this.showAllPhotographers(this.tagsSelected);
         this.showTags();
-        // this.filterTag();
         this.eventTags();
+        this.clearTags(this.tagsSelected);
     }
 
     showAllPhotographers(filtreTags) {
@@ -34,16 +26,34 @@ class IndexPage {
 
             else {
                 
-               console.log(filtreTags);
+               let filtreTagsLower = filtreTags.map(tags => tags.toLowerCase());
                
-               filtreTags.forEach(tags => {
-                    console.log(data.photographers);
-                    photographersFiltre.push(data.photographers.filter(t => t.tags.includes('animals')));
+               filtreTagsLower.forEach(tags => {
+                    // console.log(tags);
+                    photographersFiltre.push(data.photographers.filter(t => t.tags.includes(tags)));
                });
-               this.view.renderAllPhotographers(data.photographersFiltre);
+               
+               photographersFiltre.forEach(p => {
+                    this.view.renderAllPhotographers(p);
+                    
+               })
+               const photographersToClear = document.querySelectorAll(".photographers__line--profile");
+            //    console.log(photographersToClear);
             }
         })
 
+    }
+
+    clearTags(tagsSelected) {
+        const photographersToClear = document.querySelectorAll(".photographers__line--profile");
+        const datas = this.ajax.fetchData();
+        // console.log(photographersToClear);
+        
+        // datas.then(data => {
+        //     if() {
+
+        //     }
+        // })
     }
 
     showTags() {
@@ -54,14 +64,6 @@ class IndexPage {
         })  
     }
 
-    // filterTag() {
-    //     const datas = this.ajax.fetchData();
-
-    //     datas.then(data => {
-    //         this.view.filterTag(data.photographers);
-    //     })
-    // }
-
     eventTags() {
         const tags = document.getElementById("navmenu");
         let tagsSelected = [];
@@ -69,18 +71,34 @@ class IndexPage {
         tags.addEventListener('click', event =>{
             
             if(event.target.nodeName === 'SPAN') {
-                event.target.style.background = '#DB8876';
-                tagsSelected.push(event.target.innerText.substring(1)); //Retire le #
-                this.showAllPhotographers(tagsSelected);
+                
+                if(tagsSelected.includes(event.target.innerText.substring(1))) {
+                    let index = tagsSelected.indexOf(event.target.innerText.substring(1));
+                    console.log(index);
+                    tagsSelected.splice(index, 1);
+                    console.log(tagsSelected);
+                    event.target.style.background = 'none';
+
+                    if(tagsSelected.length === 0) {
+                        tagsSelected = undefined;
+                    }
+                    return true;
+                }
+                else {
+                    event.target.style.background = '#DB8876';
+                    tagsSelected.push(event.target.innerText.substring(1)); //Retire le #
+                    this.showAllPhotographers(tagsSelected);
+                }
+                
                 //this.view.clearPhotographe(tous)
-                //récupérer le nom du filtre (innertext, clear #)
-                //showAllphotographer(tags selected)
             }
 
+
             // else {
+            //     event.target.style.background = 'none';
             //     this.view.clearTags(this.renderAllPhotographers());
             // }
-
+            // tagsSelected = [];
         })
     }
 
