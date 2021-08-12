@@ -60,6 +60,12 @@ export class View {
         });
     }
 
+    clearCardsPhotographers() {
+        const section = document.getElementById("photographers");
+
+        section.innerHTML = '';
+    }
+
     renderAllTags(tags) {
         //Get all tags from json 
         let returnTags = (tags) => {
