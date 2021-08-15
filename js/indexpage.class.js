@@ -1,3 +1,4 @@
+import { Picture } from '../lib/mediaimage.class.js';
 import { View } from './view.class.js';
 import { Ajax } from '/lib/ajax.class.js';
 
@@ -18,29 +19,28 @@ class IndexPage {
         datas.then(data => {
             
             let photographersFiltre = [];
-            // console.log(filtreTags)
+            let concatPhotographers = [];
+            let filtered = [];
 
             if(filtreTags === undefined) {
                 this.view.renderAllPhotographers(data.photographers);
-                console.log("coucou");
             }
 
             else {
                 this.view.clearCardsPhotographers();
                 
-               let filtreTagsLower = filtreTags.map(tags => tags.toLowerCase());
-               
-               filtreTagsLower.forEach(tags => {
-                    photographersFiltre.push(data.photographers.filter(t => t.tags.includes(tags)));
-               });
+                let filtreTagsLower = filtreTags.map(tags => tags.toLowerCase());
 
-               photographersFiltre.forEach(p => {
-                    this.view.renderAllPhotographers(p);
-                    
-               })
+                filtreTagsLower.forEach(tags => {
+                    photographersFiltre.push(data.photographers.filter(t => t.tags.includes(tags)));
+                });
+
+                concatPhotographers = photographersFiltre.reduce((acc, current) => acc.concat(current), []);
+                // let concatPhotographers = [].concat(...photographersFiltre.map(littleArray => littleArray));
+                filtered = [...new Set(concatPhotographers.map(JSON.stringify))].map(JSON.parse);
+                this.view.renderAllPhotographers(filtered);
             }
         })
-
     }
 
 
@@ -65,11 +65,14 @@ class IndexPage {
                     tagsSelected.splice(index, 1);
                     event.target.style.background = 'none';
                     this.showAllPhotographers(tagsSelected);
-                    console.log(tagsSelected);
 
+                    //set le tableau sur undefined pour respecter le IF de showallphotographers 
+                    //et ainsi afficher tous les photographes si aucun tags n'est sélectionnés
+                    //puis setup tableau vide pour que showAllPhotgraphers puisse fonctionner
                     if(tagsSelected.length === 0) {
-                        tagsSelected = undefined;
+                        tagsSelected = undefined; 
                         this.showAllPhotographers(tagsSelected);
+                        tagsSelected = [];
                     }
                 
                 }
@@ -83,7 +86,7 @@ class IndexPage {
     }
 
 }
-const indexPage = new IndexPage(new View(), new Ajax('/data/FishEyeData.json'));
+const indexPage = new IndexPage(new View(), new Ajax('/data/FishEyeData.json'), new Picture());
 indexPage.run();
 
 

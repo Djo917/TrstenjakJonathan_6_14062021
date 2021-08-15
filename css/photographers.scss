@@ -105,52 +105,63 @@ body {
 
 
 /* Menu déroulant */
- .menu {
-     position: sticky;
-     top: 0px;
-     display: flex;
-     align-items: center;
- }
+*{
+    margin: 0em;
+    padding: 0em;
+}
+.menu {
+    font-style: $fonts;
+    display: flex;
 
- nav ul {
-     list-style-type: none;
- }
-
- nav a {
-     text-decoration: none;
-     color: white;
-     font-family: 'DM Sans';
- }
-
- .menu--scrolling {
-     display: none;
-
- }
-
- .menu--scrolling li {
-    float: none;
-    width: 100%;
-    text-align: left;
-    height: 3em;
-    width: 8em;
-    background-color: $primarybackground;
- }
-
- nav > ul li:hover .menu--scrolling {
-     display: block;
- }
+    & li {
+        position: relative; 
+        float: left;
+        width: 13%;
+    }
+}
 
 .menu__nav {
-    text-align: center;
-    height: 3em;
-    width: 8em;
-    border-bottom: none;
+    text-decoration: none;
+    list-style: none;
+    margin-left: 2em;
+    width: 7em;
+    height: 2em;
     background-color: $primarybackground;
-    border-radius: 0.3em;
-
-    & a {
-        vertical-align: text-top;
+    
+    a {
+        text-decoration: none;
     }
+
+    &--main {
+        margin-top: 1.5em;
+        color: white;
+        vertical-align: middle;
+    }
+}
+
+.menu__nav--scrolling {
+    list-style-type: none;
+    text-align: center;
+    display: none;
+    position: absolute;
+    width: 100%;
+    z-index: 1000;
+
+    li {
+        background-color: $primarybackground;
+        
+        float: none;
+        text-align: left;
+        width: 100%;
+    }
+    a {
+        color: white;
+        text-decoration: none;
+    }
+}
+
+nav > li:hover .menu__nav--scrolling {
+    display: block;
 }
 /* Fin menu déroulant */
 

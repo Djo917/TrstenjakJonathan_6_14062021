@@ -1,0 +1,37 @@
+*{
+    margin: 0em;
+    padding: 0em;
+}
+.menu {
+    display: flex;
+}
+
+.menu__nav {
+    text-decoration: none;
+    list-style: none;
+    margin-left: 2em;
+
+    a {
+        
+        text-decoration: none;
+    }
+}
+
+.menu__nav--scrolling {
+    list-style-type: none;
+    text-align: left;
+    display: none;
+
+    li {
+        float: none;
+        text-align: left;
+    }
+    a {
+        
+        text-decoration: none;
+    }
+}
+
+nav > li:hover .menu__nav--scrolling {
+    display: block;
+}

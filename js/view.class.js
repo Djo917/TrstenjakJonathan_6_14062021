@@ -216,6 +216,7 @@ export class View {
         })
         
     }
+
     // renderLikes(media) {
     //     // console.log(media[0].likes);
     //     const buttonLike = document.getElementsById("testlikes");

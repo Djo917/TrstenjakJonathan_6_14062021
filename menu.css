@@ -1,0 +1,40 @@
+* {
+  margin: 0em;
+  padding: 0em;
+}
+
+.menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.menu__nav {
+  text-decoration: none;
+  list-style: none;
+  margin-left: 2em;
+}
+
+.menu__nav a {
+  text-decoration: none;
+}
+
+.menu__nav--scrolling {
+  list-style-type: none;
+  text-align: left;
+  display: none;
+}
+
+.menu__nav--scrolling li {
+  float: none;
+  text-align: left;
+}
+
+.menu__nav--scrolling a {
+  text-decoration: none;
+}
+
+nav > li:hover .menu__nav--scrolling {
+  display: block;
+}
+/*# sourceMappingURL=menu.css.map */
