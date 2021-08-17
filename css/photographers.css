@@ -99,12 +99,13 @@ body {
 
 /* Menu déroulant */
 * {
-  margin: 0em;
   padding: 0em;
 }
 
 .menu {
   font-style: "DM Sans";
+  font-size: 1.1em;
+  font-weight: 700;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -113,7 +114,11 @@ body {
 .menu li {
   position: relative;
   float: left;
-  width: 13%;
+  width: 10%;
+}
+
+.menu li a {
+  margin-left: 1em;
 }
 
 .menu__nav {
@@ -121,8 +126,9 @@ body {
   list-style: none;
   margin-left: 2em;
   width: 7em;
-  height: 2em;
+  height: 3em;
   background-color: #901C1C;
+  border-radius: 0.3em;
 }
 
 .menu__nav a {
@@ -158,6 +164,16 @@ body {
 
 nav > li:hover .menu__nav--scrolling {
   display: block;
+}
+
+.border--top {
+  height: 0.5em;
+  width: 100%;
+  background-color: white;
+}
+
+.menu__bottom {
+  border-radius: 0 0 0.3em 0.3em;
 }
 
 /* Fin menu déroulant */

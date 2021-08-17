@@ -105,18 +105,25 @@ body {
 
 
 /* Menu déroulant */
+
 *{
-    margin: 0em;
     padding: 0em;
 }
 .menu {
     font-style: $fonts;
+    font-size: 1.1em;
+    font-weight: 700;
     display: flex;
 
     & li {
         position: relative; 
         float: left;
-        width: 13%;
+        width: 10%;
+
+
+        a {
+            margin-left: 1em;;
+        }
     }
 }
 
@@ -125,8 +132,9 @@ body {
     list-style: none;
     margin-left: 2em;
     width: 7em;
-    height: 2em;
+    height: 3em;
     background-color: $primarybackground;
+    border-radius: 0.3em;
     
     a {
         text-decoration: none;
@@ -136,6 +144,7 @@ body {
         margin-top: 1.5em;
         color: white;
         vertical-align: middle;
+
     }
 }
 
@@ -149,7 +158,6 @@ body {
 
     li {
         background-color: $primarybackground;
-        
         float: none;
         text-align: left;
         width: 100%;
@@ -162,6 +170,16 @@ body {
 
 nav > li:hover .menu__nav--scrolling {
     display: block;
+}
+
+.border--top {
+    height: 0.5em;
+    width: 100%;
+    background-color: white;
+}
+
+.menu__bottom {
+    border-radius: 0 0 0.3em 0.3em;
 }
 /* Fin menu déroulant */
 

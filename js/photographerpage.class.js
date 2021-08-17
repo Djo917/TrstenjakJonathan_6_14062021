@@ -1,12 +1,11 @@
 import { View } from './view.class.js';
 import { Ajax } from '/lib/ajax.class.js';
-import { Picture } from '/lib/mediaimage.class.js';
+import { mediaFactory } from '/lib/mediafactory.class.js';
 
 class PhotographerPage {
-    constructor(view, ajax, picture) {
+    constructor(view, ajax) {
         this.view = view;
         this.ajax = ajax;
-        this.picture = picture;
     }
     run() {
         // this.showLikes();
@@ -26,18 +25,20 @@ class PhotographerPage {
         const datas = this.ajax.fetchData();
 
         datas.then(data => {
-            this.picture.displayPictures(data.media);
+            mediaFactory(data.media);
         })
+
     }
 
-    showMovies () {
-        const datas = this.ajax.fetchData();
+    // showMovies () {
+    //     const datas = this.ajax.fetchData();
 
-        datas.then(data => {
-            this.movie.displayMovies(data.media);
-        })
-    }
+    //     datas.then(data => {
+    //         this.movie.displayMovies(data.media);
+    //     })
+    // }
 }
 
-const photographerPage = new PhotographerPage(new View(), new Ajax('/data/FishEyeData.json'), new Picture());
+const photographerPage = new PhotographerPage(new View(), new Ajax('/data/FishEyeData.json'));
 photographerPage.run();
+
