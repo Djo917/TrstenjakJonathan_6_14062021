@@ -1,4 +1,4 @@
-import { Picture } from '../lib/mediaimage.class.js';
+// import { Picture } from '../lib/mediaimage.class.js';
 import { View } from './view.class.js';
 import { Ajax } from '/lib/ajax.class.js';
 
@@ -86,7 +86,7 @@ class IndexPage {
     }
 
 }
-const indexPage = new IndexPage(new View(), new Ajax('/data/FishEyeData.json'), new Picture());
+const indexPage = new IndexPage(new View(), new Ajax('/data/FishEyeData.json'));
 indexPage.run();
 
 
