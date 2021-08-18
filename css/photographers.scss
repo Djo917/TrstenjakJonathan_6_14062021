@@ -184,18 +184,47 @@ nav > li:hover .menu__nav--scrolling {
 /* Fin menu déroulant */
 
 .content {
+    width: 1280px;
     display: flex;
     justify-content: space-between;
-}
-.content__vignettes {
+    flex-wrap: wrap;
+    margin-top: 1em;
 
-    &--pictures {
-        object-fit: cover;
-        height: 18em;
-        width: 25em;
-        border-radius: 0.5em;
+    &__vignettes {
+        width: 26%;
+    
+        &--pictures {
+            object-fit: cover;
+            height: 18em;
+            width: 100%;
+            border-radius: 0.5em;
+        }
+    }
+
+    &__describe {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        
+        &--text {
+            font-family: $fonts;
+            font-weight: 400;
+            font-size: 1.4em;
+            color: $secondarytext
+        }
+
+        &--button {
+            height: 100%;
+            background-color: white;
+            border: none;
+            color: $secondarytext;
+            font-weight: 500;
+            font-family: $fonts;
+        }
     }
 }
+
+
 
 /* Début reponsive */ 
 @media screen and (max-width: 375px) {

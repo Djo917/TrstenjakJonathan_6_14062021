@@ -178,20 +178,56 @@ nav > li:hover .menu__nav--scrolling {
 
 /* Fin menu déroulant */
 .content {
+  width: 1280px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin-top: 1em;
+}
+
+.content__vignettes {
+  width: 26%;
 }
 
 .content__vignettes--pictures {
   -o-object-fit: cover;
      object-fit: cover;
   height: 18em;
-  width: 25em;
+  width: 100%;
   border-radius: 0.5em;
+}
+
+.content__describe {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.content__describe--text {
+  font-family: "DM Sans";
+  font-weight: 400;
+  font-size: 1.4em;
+  color: #901C1C;
+}
+
+.content__describe--button {
+  height: 100%;
+  background-color: white;
+  border: none;
+  color: #901C1C;
+  font-weight: 500;
+  font-family: "DM Sans";
 }
 
 /* Début reponsive */

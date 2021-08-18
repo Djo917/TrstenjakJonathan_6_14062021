@@ -10,6 +10,7 @@ $classicblack: black;
 $textmodal: #312E2E;
 $bordertag: #C4C4C4;
 $onhover: #DB8876;
+$fonts: 'DM Sans';
 
 body {
     min-width: 300px;
@@ -99,7 +100,9 @@ body {
     
         &--name {
             margin-bottom: 0em;
-            color: $primarytext
+            color: $primarytext;
+            font-family: $fonts;
+            font-weight: 400;
         }
     
         &--location {
