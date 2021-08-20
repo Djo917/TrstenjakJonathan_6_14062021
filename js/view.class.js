@@ -1,4 +1,9 @@
+import { Mediafactory } from '/lib/mediafactory.class.js';
+
 export class View {
+    constructor() {
+        this.mediafactory = new Mediafactory();
+    }
     renderAllPhotographers(photographers) {
         
         photographers.forEach(photographer => {
@@ -217,16 +222,29 @@ export class View {
         
     }
 
-    // renderLikes(media) {
-    //     // console.log(media[0].likes);
-    //     const buttonLike = document.getElementsById("testlikes");
-    //         console.log(buttonLike);
-    //     media.forEach(mediaLikes => {
-    //         console.log(media[0].likes);
-            
-    //         buttonLike.innerHTML = mediaLikes[0].likes + "❤️";
-    //     });
-    // }
+    renderAllMedia(medias) {
 
+        const idUrl = window.location.search.substr(1);
+        let getMedias = medias.filter(p => p.photographerId == idUrl);
+
+        getMedias.forEach(media => { 
+            let mediahtml = this.mediafactory.createMedia(media);
+            console.log(mediahtml);
+            const vignette = document.getElementById(media.id);
+            const div = document.createElement("div");
+            const p = document.createElement("p");
+            const button = document.createElement("button");
+               
+            vignette.appendChild(div);
+            div.classList.add("content__describe");
+
+            div.appendChild(p).innerText = media.title
+            p.classList.add("content__describe--text")
+            
+            div.appendChild(button).innerText = media.likes + "❤️";
+            button.classList.add("content__describe--button");
+            button.setAttribute("id", "buttonlikes");
+        });
+    }
 }
 export default View;

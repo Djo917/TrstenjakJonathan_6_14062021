@@ -56,7 +56,7 @@ class IndexPage {
         const tags = document.getElementById("navmenu");
         let tagsSelected = [];
 
-        tags.addEventListener('click', event =>{
+        tags.addEventListener('click', event => {
 
             if(event.target.nodeName === 'SPAN') {
                 
@@ -84,28 +84,6 @@ class IndexPage {
             }
         })
     }
-
 }
 const indexPage = new IndexPage(new View(), new Ajax('/data/FishEyeData.json'));
 indexPage.run();
-
-
-
-    // showLikes () {
-    //     const datasLikes = this.ajax.fetchData();
-
-    //     datasLikes.then(dataLikes => {
-    //         this.view.renderLikes(dataLikes.media);
-    //     })
-    // }
-
-
-// const redirectUp = () => {
-    
-// }
-
-// const showLike = () => {
-//     const buttonLike = document.querySelector("content__describe");
-
-
-// }

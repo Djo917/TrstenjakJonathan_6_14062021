@@ -9,9 +9,9 @@ class PhotographerPage {
         this.mediafactory = mediafactory;
     }
     run() {
-        // this.showLikes();
         this.showPhotographer();
         this.showMedias();
+        // this.incrementLikes();
     }
 
     showPhotographer() {
@@ -26,17 +26,30 @@ class PhotographerPage {
         const datas = this.ajax.fetchData();
 
         datas.then(data => {
-            this.mediafactory.renderMedia(data.media)
+            this.view.renderAllMedia(data.media);
         })
 
     }
 
-    // showMovies () {
+    // showMedias() {
     //     const datas = this.ajax.fetchData();
+    //     const idUrl = window.location.search.substr(1);
+        
 
     //     datas.then(data => {
-    //         this.movie.displayMovies(data.media);
+    //         const medias = data.media.filter(p => p.photographerId == idUrl);
+    //         this.view.renderAllMedia(medias);
     //     })
+    // }
+
+    // incrementLikes () {
+    //     const button = document.getElementById("buttonlikes");
+    //     console.log(button);
+        
+    //     button.addEventListener('click', e => {
+    //         console.log(e);
+    //     })
+
     // }
 }
 
