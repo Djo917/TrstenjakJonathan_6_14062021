@@ -12,6 +12,7 @@ class PhotographerPage {
         this.showPhotographer();
         this.showMedias();
         // this.incrementLikes();
+        this.eventLikes();
     }
 
     showPhotographer() {
@@ -30,29 +31,13 @@ class PhotographerPage {
         })
 
     }
+    
+    eventLikes() {
 
-    // showMedias() {
-    //     const datas = this.ajax.fetchData();
-    //     const idUrl = window.location.search.substr(1);
+        window.setTimeout(this.view.Likes, 90);
         
-
-    //     datas.then(data => {
-    //         const medias = data.media.filter(p => p.photographerId == idUrl);
-    //         this.view.renderAllMedia(medias);
-    //     })
-    // }
-
-    // incrementLikes () {
-    //     const button = document.getElementById("buttonlikes");
-    //     console.log(button);
-        
-    //     button.addEventListener('click', e => {
-    //         console.log(e);
-    //     })
-
-    // }
+    }
 }
 
 const photographerPage = new PhotographerPage(new View(), new Ajax('/data/FishEyeData.json'), new Mediafactory());
 photographerPage.run();
-
