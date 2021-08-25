@@ -245,61 +245,9 @@ export class View {
             button.setAttribute("value", media.likes);
             button.innerText = button.value + "❤️";
             button.classList.add("content__describe--button");
-            button.setAttribute("id", "buttonlikes" + media.likes);
+            button.setAttribute("id", media.id);
             
         });
     }
-
-    Likes() {
-        const buttonlikes = document.querySelectorAll('button');
-        
-        
-        buttonlikes.forEach(button => {
-            
-            button.addEventListener('click', (e) => {
-                let convert = parseInt(e.target.value, 10);
-                convert += 1;
-                e.target.value = convert;
-                button.innerText = e.target.value + "❤️";
-            })
-        })
-    }
-
-
-
-    // moreLikes(media) {
-    //     const idUrl = window.location.search.substr(1);
-    //     const getMedias = media.filter(p => p.photographerId == idUrl);
-    //     const numberLikes = [];
-    //     const id = []
-
-    //     console.log(getMedias);
-
-    //     getMedias.forEach(l => {
-    //         numberLikes.push(l.likes)
-    //     })
-    //     console.log(numberLikes);
-
-    //     numberLikes.forEach(n => {
-    //         id.push(document.getElementById("buttonlikes" + n))
-    //     })
-
-    //     console.log(id);
-
-    //     id.forEach(i => {
-    //         i.addEventListener('click', plus => {
-    //             getMedias.likes += 1;
-    //         })
-    //     })
-    // }
-
-    // test(media) {
-    //     const id = document.getElementById("buttonlikes88");
-    //     console.log(media);
-
-    //     id.addEventListener('click', plus => {
-            
-    //     })
-    // }
 }
 export default View;

@@ -11,7 +11,6 @@ class PhotographerPage {
     run() {
         this.showPhotographer();
         this.showMedias();
-        // this.incrementLikes();
         this.eventLikes();
     }
 
@@ -33,9 +32,30 @@ class PhotographerPage {
     }
     
     eventLikes() {
+        const datas = this.ajax.fetchData();
+        const idUrl = window.location.search.substr(1);
 
-        window.setTimeout(this.view.Likes, 90);
-        
+        window.onload = () =>  {
+            const element = document.querySelectorAll('button');
+            
+            datas.then(data => {
+                let getMedias = data.media.filter(p => p.photographerId == idUrl);
+
+                element.forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        let getId = e.target.id;
+
+                        getMedias.forEach(m => {
+
+                            if(getId == m.id) {
+                                m.likes ++;
+                                button.innerText = m.likes + "❤️";
+                            }
+                        })
+                    })
+                })
+            })
+        }
     }
 }
 
