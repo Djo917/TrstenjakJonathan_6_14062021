@@ -12,6 +12,7 @@ class PhotographerPage {
         this.showPhotographer();
         this.showMedias();
         this.eventLikes();
+        this.noPhotographer();
     }
 
     showPhotographer() {
@@ -56,6 +57,31 @@ class PhotographerPage {
                 })
             })
         }
+    }
+
+    noPhotographer() {
+        const datas = this.ajax.fetchData();
+        let idUrl = window.location.search.substr(1);
+        idUrl = parseInt(idUrl, 10);
+
+        console.log(typeof idUrl);
+
+        datas.then(data => {
+            let arrayId = [];
+            data.photographers.forEach(p => {
+                arrayId.push(p.id);
+            })
+            
+            if(arrayId.includes(idUrl)) {
+                return true;
+            }
+            else {
+                const main = document.getElementById("deleteall");
+                main.innerHTML = "Le photographe recherché n'existe pas";
+                main.style.color = "red";
+                main.style.fontSize = "3em";
+            }
+        })
     }
 }
 
