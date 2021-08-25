@@ -178,7 +178,7 @@ nav > li:hover .menu__nav--scrolling {
 
 /* Fin menu déroulant */
 .content {
-  width: 1280px;
+  max-width: 1280px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -199,7 +199,7 @@ nav > li:hover .menu__nav--scrolling {
      object-fit: cover;
   height: 18em;
   width: 100%;
-  border-radius: 0.5em;
+  border-radius: 0.2em;
 }
 
 .content__describe {

@@ -13,6 +13,8 @@ class PhotographerPage {
         this.showMedias();
         this.eventLikes();
         this.noPhotographer();
+        this.launchModal();
+        this.closeModal;
     }
 
     showPhotographer() {
@@ -64,8 +66,6 @@ class PhotographerPage {
         let idUrl = window.location.search.substr(1);
         idUrl = parseInt(idUrl, 10);
 
-        console.log(typeof idUrl);
-
         datas.then(data => {
             let arrayId = [];
             data.photographers.forEach(p => {
@@ -81,6 +81,22 @@ class PhotographerPage {
                 main.style.color = "red";
                 main.style.fontSize = "3em";
             }
+        })
+    }
+
+    launchModal() {
+        const button = document.querySelector(".photographers__button--submit ");
+        const modal = document.querySelector(".wrappermodal");
+        console.log(button);
+
+        button.addEventListener('click', () => {
+            modal.style.display = "block";
+        })
+
+        const cross = document.getElementById("close");
+        
+        cross.addEventListener('click', () => {
+            modal.style.display = "none";
         })
     }
 }

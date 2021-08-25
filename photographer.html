@@ -48,9 +48,77 @@
                         </ul>
                     </li>
             </nav>
+        
+        <div class ="wrappermodal">
+            <div class="modal">
+                <span id="close" class="modal--close"></span>
+                <p class="modal--contactname">Contactez-moi <br> Mimi Keel</p>
+                <form 
+                    method="post"
+                    name="contact"
+                    id="formulaire"
+                    class="modal__contact"
+                >
+
+                <div class="modal__contact--firstname modal__contact--pos">
+                    <label for="first">Prénom</label><br>
+                    <input
+                        class="modal__contact--textarea"
+                        type="text"
+                        id="first"
+                        name="first"
+                        >
+                        <span id="messageErreurPrenom" class="messageErreur"></span>
+                </div>
+
+                <div class="modal__contact--lastname modal__contact--pos">
+                    <label for="last">Nom</label><br>
+                    <input
+                        class="modal__contact--textarea"
+                        type="text"
+                        id="last"
+                        name="last"
+                    >
+                    <span id="messageErreurNom" class="messageErreur"></span>
+                </div>
+
+                <div class="modal__contact--email modal__contact--pos">
+                    <label for="email">Email</label><br>
+                    <input
+                        class="modal__contact--textarea"
+                        type="email"
+                        id="email"
+                        name="email"
+                    >
+                    <span id="messageErreurEmail" class="messageErreur"></span>
+                </div>
+
+                <div class="modal__contact--message modal__contact--pos">
+                    <label for="email">Votre message</label><br>
+                    <input
+                        class="modal__contact--textareamsg"
+                        type="text"
+                        id="message"
+                        name="message"
+                    >
+                    <span id="messageErreurEmail" class="messageErreur"></span>
+                </div>
+                
+                <div class ="modal__contact--btn modal__contact--pos">
+                    <input
+                        class="modal__contact--btnsubmit"
+                        type="submit"
+                        id="btnsubmit"
+                        value="Envoyer"
+                    />
+                </div>
+
+            </form>  
+        </div>
+        </div>
+
 
         <section class="content" id = "content"></section>
-
     </main>
 </body>
 </html>

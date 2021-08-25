@@ -1,4 +1,18 @@
+.wrappermodal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(26, 39, 156, 0.4);
+}
+
 .modal {
+  position: relative;
+  margin: 5% auto;
   height: 460px;
   width: 380px;
   background-color: #DB8876;
@@ -10,6 +24,10 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-animation-name: modalopen;
+          animation-name: modalopen;
+  -webkit-animation-duration: var(--modal-duration);
+          animation-duration: var(--modal-duration);
 }
 
 .modal--contactname {
@@ -22,7 +40,6 @@
 .modal--close {
   position: absolute;
   left: 21.3em;
-  top: 1em;
   width: 2em;
   height: 2em;
 }
@@ -83,5 +100,27 @@
   border: none;
   border-radius: 5px;
   margin-top: 1.5em;
+}
+
+@-webkit-keyframes modalopen {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(-150px);
+            transform: translateY(-150px);
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalopen {
+  from {
+    opacity: 0;
+    -webkit-transform: translateY(-150px);
+            transform: translateY(-150px);
+  }
+  to {
+    opacity: 1;
+  }
 }
 /*# sourceMappingURL=modal.css.map */

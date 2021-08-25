@@ -184,7 +184,7 @@ nav > li:hover .menu__nav--scrolling {
 /* Fin menu déroulant */
 
 .content {
-    width: 1280px;
+    max-width: 1280px;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
