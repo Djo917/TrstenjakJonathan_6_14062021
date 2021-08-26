@@ -13,8 +13,7 @@ class PhotographerPage {
         this.showMedias();
         this.eventLikes();
         this.noPhotographer();
-        this.launchModal();
-        this.closeModal;
+        this.handleModal();
     }
 
     showPhotographer() {
@@ -84,10 +83,9 @@ class PhotographerPage {
         })
     }
 
-    launchModal() {
+    handleModal() {
         const button = document.querySelector(".photographers__button--submit ");
         const modal = document.querySelector(".wrappermodal");
-        console.log(button);
 
         button.addEventListener('click', () => {
             modal.style.display = "block";

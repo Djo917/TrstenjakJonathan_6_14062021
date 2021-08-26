@@ -1,5 +1,5 @@
 import { Mediafactory } from '/lib/mediafactory.class.js';
-
+import { Picture } from '/lib/mediaimage.class.js';
 export class View {
     constructor() {
         this.mediafactory = new Mediafactory();
@@ -228,14 +228,24 @@ export class View {
         let getMedias = medias.filter(p => p.photographerId == idUrl);
 
         getMedias.forEach(media => { 
-            let mediahtml = this.mediafactory.createMedia(media);
-            // console.log(mediahtml);
-            const vignette = document.getElementById(media.id);
+            let mediahtml = this.mediafactory.createMedia(media, true);
+            console.log(mediahtml);
+           
+            const idSection = document.getElementById("content");
+            const article = document.createElement("article");
             const div = document.createElement("div");
             const p = document.createElement("p");
             const button = document.createElement("button");
-               
-            vignette.appendChild(div);
+
+
+
+            idSection.appendChild(article);
+            article.classList.add("content__vignettes");
+            article.setAttribute("id", `${media.id}`);
+            
+            article.appendChild(mediahtml.createImg());
+
+            article.appendChild(div);
             div.classList.add("content__describe");
 
             div.appendChild(p).innerText = media.title;
