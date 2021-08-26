@@ -1,5 +1,5 @@
 import { Mediafactory } from '/lib/mediafactory.class.js';
-import { Picture } from '/lib/mediaimage.class.js';
+
 export class View {
     constructor() {
         this.mediafactory = new Mediafactory();

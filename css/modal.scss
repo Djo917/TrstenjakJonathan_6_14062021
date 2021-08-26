@@ -16,14 +16,13 @@ $primarybackground: #901C1C;
 .modal {
     position: relative;
     margin: 5% auto;
-    height: 460px;
+    height: 520px;
     width: 380px;
     background-color: #DB8876;
     border-radius: 5px;
-    display: flex;
-    flex-direction: column;
     animation-name: modalopen;
     animation-duration: var(--modal-duration);
+    overflow: hidden;
 
     &--contactname {
         margin-left: 1em;
@@ -65,7 +64,7 @@ $primarybackground: #901C1C;
     }
 
     &__contact--pos {
-        margin-top: 0.5em;
+        margin-top: 0.7em;
         margin-left: 1.5em; 
     }
 
@@ -94,6 +93,12 @@ $primarybackground: #901C1C;
         margin-top: 1.5em;
     }
 }
+
+.messageErreur {
+    font-size: 0.9rem;
+    font-style: bold;
+    color: white;
+  }
 
 @keyframes modalopen {
     from {
