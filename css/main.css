@@ -212,12 +212,22 @@ nav > li:hover .menu__nav--scrolling {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin-top: -1.2em;
 }
 
 .content__describe--text {
   font-family: "DM Sans";
   font-weight: 400;
   font-size: 1.4em;
+  color: #901C1C;
+}
+
+.content__describe--price {
+  font-family: "DM Sans";
+  margin-top: -0.2em;
+  font-weight: 400;
+  font-size: 1em;
+  margin-top: -0.5em;
   color: #901C1C;
 }
 

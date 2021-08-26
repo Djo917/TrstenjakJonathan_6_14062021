@@ -226,18 +226,25 @@ export class View {
 
         const idUrl = window.location.search.substr(1);
         let getMedias = medias.filter(p => p.photographerId == idUrl);
+        console.log(getMedias);
 
         getMedias.forEach(media => { 
+            console.log(media.price);
             let mediahtml = this.mediafactory.createMedia(media, true);
             console.log(mediahtml);
-           
             const idSection = document.getElementById("content");
             const article = document.createElement("article");
             const div = document.createElement("div");
             const p = document.createElement("p");
+            const price = document.createElement("p");
             const button = document.createElement("button");
 
+            let priceEuro = new Intl.NumberFormat('fr-FR', { /* Formate le prix en fonction du local */
 
+                style: 'currency',
+                currency: 'EUR',
+                minimumFractionDigits: 0
+            });
 
             idSection.appendChild(article);
             article.classList.add("content__vignettes");
@@ -250,13 +257,15 @@ export class View {
 
             div.appendChild(p).innerText = media.title;
             p.classList.add("content__describe--text");
-            
+
+            article.appendChild(price).innerText = priceEuro.format(media.price) + '/jour';
+            price.classList.add("content__describe--price");
+
             div.appendChild(button);
             button.setAttribute("value", media.likes);
             button.innerText = button.value + "❤️";
             button.classList.add("content__describe--button");
             button.setAttribute("id", media.id);
-            
         });
     }
 }

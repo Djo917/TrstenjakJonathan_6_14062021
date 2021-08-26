@@ -205,12 +205,23 @@ nav > li:hover .menu__nav--scrolling {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        margin-top: -1.2em;
         
         &--text {
             font-family: $fonts;
             font-weight: 400;
             font-size: 1.4em;
-            color: $secondarytext
+            color: $secondarytext;
+            
+        }
+
+        &--price {
+            font-family: $fonts;
+            margin-top: -0.2em;
+            font-weight: 400;
+            font-size: 1em;
+            margin-top: -0.5em;
+            color: $secondarytext;
         }
 
         &--button {
