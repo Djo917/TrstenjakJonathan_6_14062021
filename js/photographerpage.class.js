@@ -14,6 +14,7 @@ class PhotographerPage {
         this.eventLikes();
         this.noPhotographer();
         this.handleModal();
+        this.totalCount();
     }
 
     showPhotographer() {
@@ -36,14 +37,24 @@ class PhotographerPage {
     eventLikes() {
         const datas = this.ajax.fetchData();
         const idUrl = window.location.search.substr(1);
+        const count = document.getElementById("totallikes");
+        
+        const countLikes = (likesMedias) => {
+            let totalLikes = 0;
+            likesMedias.forEach(l => {
+                totalLikes += l.likes;
+            })
+            return totalLikes;
+        }
+
 
         window.onload = () =>  {
             const element = document.querySelectorAll('button');
             
             datas.then(data => {
                 let getMedias = data.media.filter(p => p.photographerId == idUrl);
-
                 element.forEach(button => {
+                    
                     button.addEventListener('click', (e) => {
                         let getId = e.target.id;
 
@@ -52,12 +63,16 @@ class PhotographerPage {
                             if(getId == m.id) {
                                 m.likes ++;
                                 button.innerText = m.likes + "❤️";
+                                
                             }
+                            count.innerText = countLikes(getMedias) + "❤️";
                         })
+                        
                     })
                 })
             })
         }
+        
     }
 
     noPhotographer() {
@@ -158,6 +173,33 @@ class PhotographerPage {
             lastNameValid();
             emailAdressValid();
             confirmationSubmit();
+        })
+    }
+
+    totalCount() {
+        const datas = this.ajax.fetchData();
+        const idUrl = window.location.search.substr(1);
+
+        datas.then(data => {
+            let getMedias = data.media.filter(p => p.photographerId == idUrl);
+            let totalLikes = 0;
+            const getPrice = data.photographers.filter(p => p.id == idUrl)
+            const count = document.getElementById("totallikes");
+            const price = document.getElementById("price");
+            
+            getMedias.forEach(l => {
+                totalLikes += l.likes
+                count.innerText = totalLikes + "❤️";
+            })
+
+            let priceEuro = new Intl.NumberFormat('fr-FR', { /* Formate le prix en fonction du local */
+
+                style: 'currency',
+                currency: 'EUR',
+                minimumFractionDigits: 0
+            });
+
+            price.innerText = priceEuro.format(getPrice[0].price) + '/jour';
         })
     }
 }

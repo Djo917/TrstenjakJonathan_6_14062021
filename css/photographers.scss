@@ -235,6 +235,23 @@ nav > li:hover .menu__nav--scrolling {
     }
 }
 
+.countlikes {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-around;
+    height: 4em;
+    width: 20em;
+    background-color: #DB8876;
+    border-radius: 0.5em 0.5em 0 0;
+
+    &--text {
+        font-family: $fonts;
+        font-weight: 500;
+        font-size: 1.3em;
+    }
+}
 
 
 /* Début reponsive */ 

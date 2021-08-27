@@ -226,12 +226,10 @@ export class View {
 
         const idUrl = window.location.search.substr(1);
         let getMedias = medias.filter(p => p.photographerId == idUrl);
-        console.log(getMedias);
 
         getMedias.forEach(media => { 
-            console.log(media.price);
+
             let mediahtml = this.mediafactory.createMedia(media, true);
-            console.log(mediahtml);
             const idSection = document.getElementById("content");
             const article = document.createElement("article");
             const div = document.createElement("div");
