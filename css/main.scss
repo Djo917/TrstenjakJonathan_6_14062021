@@ -1,5 +1,6 @@
 @import 'photographers';
 @import 'modal';
+@import 'lightbox';
 $primarybackground: #901C1C;
 $primarytext: #D3573C;
 $secondarybackground: #D3573C;
@@ -186,7 +187,7 @@ body {
     .photographers__line {
         justify-content: center;
     }
-
+s
     .banner {
         flex-wrap: wrap;
     }
