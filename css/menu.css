@@ -1,40 +1,26 @@
 * {
-  margin: 0em;
   padding: 0em;
 }
 
 .menu {
+  font-family: "DM Sans";
+  font-size: 1.1em;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .menu__nav {
-  text-decoration: none;
-  list-style: none;
+  font-family: "DM Sans";
+  font-weight: 700;
   margin-left: 2em;
-}
-
-.menu__nav a {
-  text-decoration: none;
-}
-
-.menu__nav--scrolling {
-  list-style-type: none;
-  text-align: left;
-  display: none;
-}
-
-.menu__nav--scrolling li {
-  float: none;
-  text-align: left;
-}
-
-.menu__nav--scrolling a {
-  text-decoration: none;
-}
-
-nav > li:hover .menu__nav--scrolling {
-  display: block;
+  width: 10em;
+  height: 3em;
+  background-color: #901C1C;
+  border-radius: 0.3em;
+  color: white;
 }
 /*# sourceMappingURL=menu.css.map */

@@ -222,10 +222,46 @@ export class View {
         
     }
 
-    renderAllMedia(medias) {
-
+    renderAllMedia(medias, typeSort) {
         const idUrl = window.location.search.substr(1);
         let getMedias = medias.filter(p => p.photographerId == idUrl);
+       
+        if(typeSort === 'Popularité') {
+            getMedias.sort(function byLikes(a, b) {
+                if(a.likes < b.likes) {
+                    return 1;
+                }
+                if(a.likes > b.likes) {
+                    return -1;
+                }
+                return 0;
+            })
+        }
+        else if(typeSort === 'Date') {
+            getMedias.sort(function byDate(a, b) {
+                a = new Date(a.date);
+                b = new Date(b.date);
+
+                if(a > b ){
+                    return -1;
+                }
+                else if(a < b){
+                    return 1;
+                }
+                return 0;
+            })
+        }
+        else {
+            getMedias.sort(function byTitle(a, b) {
+                if(a.title > b.title) {
+                    return 1;
+                }
+                if(a.title < b.title) {
+                    return -1;
+                }
+                return 0;
+            })
+        }               
 
         getMedias.forEach(media => { 
 
@@ -238,7 +274,6 @@ export class View {
             const button = document.createElement("button");
 
             let priceEuro = new Intl.NumberFormat('fr-FR', { /* Formate le prix en fonction du local */
-
                 style: 'currency',
                 currency: 'EUR',
                 minimumFractionDigits: 0
@@ -247,7 +282,7 @@ export class View {
             idSection.appendChild(article);
             article.classList.add("content__vignettes");
             article.setAttribute("id", `${media.id}`);
-            
+               
             article.appendChild(mediahtml.createImg());
 
             article.appendChild(div);

@@ -1,37 +1,32 @@
+$primarybackground: #901C1C;
+$primarytext: #D3573C;
+$secondarybackground: #D3573C;
+$secondarytext: #901C1C;
+$pricetext: #525252;
+$background: #FAFAFA;
+$classicblack: black;
+$textmodal: #312E2E;
+$bordertag: #C4C4C4;
+$onhover: #DB8876;
+$fonts: 'DM Sans';
+
 *{
-    margin: 0em;
     padding: 0em;
 }
 .menu {
+    font-family: $fonts;
+    font-size: 1.1em;
     display: flex;
+    align-items: center;
 }
 
 .menu__nav {
-    text-decoration: none;
-    list-style: none;
+    font-family: $fonts;
+    font-weight: 700;
     margin-left: 2em;
-
-    a {
-        
-        text-decoration: none;
-    }
-}
-
-.menu__nav--scrolling {
-    list-style-type: none;
-    text-align: left;
-    display: none;
-
-    li {
-        float: none;
-        text-align: left;
-    }
-    a {
-        
-        text-decoration: none;
-    }
-}
-
-nav > li:hover .menu__nav--scrolling {
-    display: block;
+    width: 10em;
+    height: 3em;
+    background-color: $primarybackground;
+    border-radius: 0.3em;
+    color: white;
 }

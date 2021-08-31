@@ -1,4 +1,13 @@
 .lightbox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   position: fixed;
   top: 0;
   left: 0;
@@ -9,16 +18,22 @@
   overflow: auto;
   -webkit-animation: lightboxDisplay 0.5s;
           animation: lightboxDisplay 0.5s;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+.lightbox.delete {
+  opacity: 0;
 }
 
 .lightbox__next, .lightbox__prev {
   border: none;
   background: url(/media/arrow.svg) center center/30em 15em no-repeat;
-  width: 4%;
-  height: 90%;
+  width: 7%;
+  height: 70%;
   position: fixed;
   top: 20em;
-  right: -10px;
+  right: 10px;
   margin-top: -25px;
   z-index: 11;
 }
@@ -32,29 +47,29 @@
 
 .lightbox__close {
   border: none;
-  width: 10em;
-  height: 10em;
+  width: 8em;
+  height: 5em;
   background: url(/media/cross.svg) center center/64px 64px no-repeat transparent;
   position: fixed;
   top: 20px;
   right: 8px;
   z-index: 12;
-  text-indent: -3000px;
 }
 
-.lightbox button {
+.lightbox .buttonlightbox {
   opacity: 0.5;
   cursor: pointer;
   -webkit-transition: opacity 0.3s;
   transition: opacity 0.3s;
-  text-indent: -3000px;
 }
 
-.lightbox button:hover {
+.lightbox .buttonlightbox:hover {
   opacity: 1;
 }
 
 .lightbox__container {
+  width: 60em;
+  height: 60em;
   margin-left: 10em;
   margin-right: 10em;
   display: -webkit-box;
@@ -66,17 +81,16 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  min-height: 100vh;
   -webkit-animation: lightboxDisplay 0.5s;
           animation: lightboxDisplay 0.5s;
 }
 
-.lightboximg {
-  max-width: 100%;
-  height: auto;
+.lightbox__container img {
+  width: 100%;
+  height: 100%;
 }
 
-@-webkit-keyframes lighboxDisplay {
+@-webkit-keyframes lightboxDisplay {
   from {
     opacity: 0;
   }
@@ -85,7 +99,7 @@
   }
 }
 
-@keyframes lighboxDisplay {
+@keyframes lightboxDisplay {
   from {
     opacity: 0;
   }

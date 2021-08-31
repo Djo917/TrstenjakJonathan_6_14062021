@@ -1,12 +1,14 @@
 import { View } from './view.class.js';
 import { Ajax } from '/lib/ajax.class.js';
 import { Mediafactory } from '/lib/mediafactory.class.js';
+import { Lightbox } from '/lib/lightbox.class.js';
 
 class PhotographerPage {
-    constructor(view, ajax, mediafactory) {
+    constructor(view, ajax, mediafactory, lightbox) {
         this.view = view;
         this.ajax = ajax;
         this.mediafactory = mediafactory;
+        this.lightbox = lightbox;
     }
     run() {
         this.showPhotographer();
@@ -15,6 +17,7 @@ class PhotographerPage {
         this.noPhotographer();
         this.handleModal();
         this.totalCount();
+        this.eventSort();
     }
 
     showPhotographer() {
@@ -23,13 +26,33 @@ class PhotographerPage {
         datas.then(data => {
             this.view.towardsPhotographer(data.photographers);
         })
+        
+    }
+
+    eventSort () {
+        const menu = document.getElementById('menufilter');
+        let selected = menu.querySelector('option').value;
+        const section = document.getElementById('content');
+        const datas = this.ajax.fetchData();
+
+
+
+        menu.addEventListener('change', (e) => {
+            section.innerHTML = '';
+            selected = e.target.value;
+            datas.then(data => {
+                this.view.renderAllMedia(data.media, selected);
+            })
+        })        
     }
 
     showMedias () {
+        const menu = document.getElementById('menufilter');
+        let selected = menu.querySelector('option').value;
         const datas = this.ajax.fetchData();
 
         datas.then(data => {
-            this.view.renderAllMedia(data.media);
+            this.view.renderAllMedia(data.media, selected);
         })
 
     }
@@ -49,7 +72,8 @@ class PhotographerPage {
 
 
         window.onload = () =>  {
-            const element = document.querySelectorAll('button');
+            const element = document.querySelectorAll('.content__describe--button');
+            this.lightbox.display();
             
             datas.then(data => {
                 let getMedias = data.media.filter(p => p.photographerId == idUrl);
@@ -67,7 +91,6 @@ class PhotographerPage {
                             }
                             count.innerText = countLikes(getMedias) + "❤️";
                         })
-                        
                     })
                 })
             })
@@ -204,5 +227,5 @@ class PhotographerPage {
     }
 }
 
-const photographerPage = new PhotographerPage(new View(), new Ajax('/data/FishEyeData.json'), new Mediafactory());
+const photographerPage = new PhotographerPage(new View(), new Ajax('/data/FishEyeData.json'), new Mediafactory(),  new Lightbox());
 photographerPage.run();
