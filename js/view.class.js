@@ -127,7 +127,7 @@ export class View {
         h2.classList.add("photographers__details--location", "fontstyle", "margin", "fontweight4");
         idDiv.appendChild(p).innerText = printProfil.tagline;
         h2.classList.add("photographers__details--skills", "fontstyle", "margin", "fontweight4");
-        idDiv.append(navMenu);
+        idSection.insertAdjacentElement('beforeend', navMenu);
         navMenu.classList.add("photographers__nav");
 
         printProfil.tags.forEach(tagsNavProfil => {

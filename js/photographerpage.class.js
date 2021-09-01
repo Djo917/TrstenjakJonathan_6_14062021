@@ -35,8 +35,6 @@ class PhotographerPage {
         const section = document.getElementById('content');
         const datas = this.ajax.fetchData();
 
-
-
         menu.addEventListener('change', (e) => {
             section.innerHTML = '';
             selected = e.target.value;
