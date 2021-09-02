@@ -79,6 +79,9 @@ class PhotographerPage {
     handleModal() {
         const button = document.querySelector(".photographers__button--submit ");
         const modal = document.querySelector(".wrappermodal");
+        const mask = /\W/;
+
+        
 
         button.addEventListener('click', () => {
             modal.style.display = "block";
@@ -94,12 +97,14 @@ class PhotographerPage {
         const firstNameValid = () => {
             const messageErreurPrenom = document.getElementById("messageErreurPrenom");
             let prenom = document.getElementById("first");
+            
           
-            if (prenom.value.length < 2) {
-              messageErreurPrenom.textContent ="Veuillez entrer 2 caractères ou plus pour le champ du prénom.";
-              return false;
+            if (prenom.value.length < 2 || prenom.value.match(mask)) {
+                messageErreurPrenom.textContent ="Veuillez entrer 2 caractères ou plus pour le champ du prénom.";
+                return false;
           
-            } else {
+            } 
+            else {
               messageErreurPrenom.textContent = "";
               return true;
             }
@@ -109,7 +114,7 @@ class PhotographerPage {
             const messageErreurNom = document.getElementById("messageErreurNom");
             let nom = document.getElementById("last");
           
-            if (nom.value.length < 2) {
+            if (nom.value.length < 2 || nom.value.match(mask)) {
               messageErreurNom.textContent ="Veuillez entrer 2 caractères ou plus pour le champ du nom.";
               return false;
           
@@ -187,13 +192,14 @@ class PhotographerPage {
     eventLikes(total) {
         const section = document.getElementById("content"); 
         const totalLikes = document.getElementById('totallikes');
-        const allLikes = document.querySelectorAll('.content__describe--button');
 
         section.addEventListener('click', (e) => {
-            e.target.value ++;
-            e.target.innerText = e.target.value + "❤️";
-            total ++;
-            totalLikes.innerText = total + "❤️";
+            if(e.target.nodeName === 'BUTTON') {
+                e.target.value ++;
+                e.target.innerText = e.target.value + "❤️";
+                total ++;
+                totalLikes.innerText = total + "❤️";
+            }
         })
     }
 }
