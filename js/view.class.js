@@ -1,4 +1,4 @@
-import { Mediafactory } from '/mediafactory.class.js';
+import { Mediafactory } from '/lib/mediafactory.class.js';
 
 export class View {
     constructor() {
