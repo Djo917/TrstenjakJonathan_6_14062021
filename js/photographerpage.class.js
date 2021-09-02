@@ -79,16 +79,22 @@ class PhotographerPage {
     handleModal() {
         const button = document.querySelector(".photographers__button--submit ");
         const modal = document.querySelector(".wrappermodal");
+        const cross = document.getElementById("close");
         const mask = /\W/;
 
-        
+        const onKeyUp = (e) => {
+            if (e.key == 'Escape') {
+                closeForm();
+            }
+        }
 
         button.addEventListener('click', () => {
             modal.style.display = "block";
         })
 
-
-        const cross = document.getElementById("close");
+        button.addEventListener('keyup', (e) => {
+            onKeyUp(e);
+        })
         
         cross.addEventListener('click', () => {
             modal.style.display = "none";
