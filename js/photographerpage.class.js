@@ -82,18 +82,14 @@ class PhotographerPage {
         const cross = document.getElementById("close");
         const mask = /\W/;
 
-        const onKeyUp = (e) => {
-            if (e.key == 'Escape') {
-                closeForm();
-            }
-        }
-
         button.addEventListener('click', () => {
             modal.style.display = "block";
         })
 
         button.addEventListener('keyup', (e) => {
-            onKeyUp(e);
+            if(e.key == 'Escape') {
+                closeForm();
+            }
         })
         
         cross.addEventListener('click', () => {
