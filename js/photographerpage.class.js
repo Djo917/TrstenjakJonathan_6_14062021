@@ -13,10 +13,10 @@ class PhotographerPage {
     run() {
         this.showPhotographer();
         this.showMedias();
-        this.eventLikes();
         this.noPhotographer();
-        this.handleModal();
         this.totalCount();
+        this.eventLikes();
+        this.handleModal();
         this.eventSort();
     }
 
@@ -31,15 +31,13 @@ class PhotographerPage {
 
     eventSort () {
         const menu = document.getElementById('menufilter');
-        let selected = menu.querySelector('option').value;
         const section = document.getElementById('content');
         const datas = this.ajax.fetchData();
 
         menu.addEventListener('change', (e) => {
             section.innerHTML = '';
-            selected = e.target.value;
             datas.then(data => {
-                this.view.renderAllMedia(data.media, selected);
+                this.view.renderAllMedia(data.media, e.target.value);
             })
         })        
     }
@@ -53,47 +51,6 @@ class PhotographerPage {
             this.view.renderAllMedia(data.media, selected);
         })
 
-    }
-    
-    eventLikes() {
-        const datas = this.ajax.fetchData();
-        const idUrl = window.location.search.substr(1);
-        const count = document.getElementById("totallikes");
-        
-        const countLikes = (likesMedias) => {
-            let totalLikes = 0;
-            likesMedias.forEach(l => {
-                totalLikes += l.likes;
-            })
-            return totalLikes;
-        }
-
-
-        window.onload = () =>  {
-            const element = document.querySelectorAll('.content__describe--button');
-            this.lightbox.display();
-            
-            datas.then(data => {
-                let getMedias = data.media.filter(p => p.photographerId == idUrl);
-                element.forEach(button => {
-                    
-                    button.addEventListener('click', (e) => {
-                        let getId = e.target.id;
-
-                        getMedias.forEach(m => {
-
-                            if(getId == m.id) {
-                                m.likes ++;
-                                button.innerText = m.likes + "❤️";
-                                
-                            }
-                            count.innerText = countLikes(getMedias) + "❤️";
-                        })
-                    })
-                })
-            })
-        }
-        
     }
 
     noPhotographer() {
@@ -206,6 +163,7 @@ class PhotographerPage {
             let totalLikes = 0;
             const getPrice = data.photographers.filter(p => p.id == idUrl)
             const count = document.getElementById("totallikes");
+            
             const price = document.getElementById("price");
             
             getMedias.forEach(l => {
@@ -219,8 +177,23 @@ class PhotographerPage {
                 currency: 'EUR',
                 minimumFractionDigits: 0
             });
-
+            this.eventLikes(totalLikes);
             price.innerText = priceEuro.format(getPrice[0].price) + '/jour';
+        })
+
+        
+    }
+
+    eventLikes(total) {
+        const section = document.getElementById("content"); 
+        const totalLikes = document.getElementById('totallikes');
+        const allLikes = document.querySelectorAll('.content__describe--button');
+
+        section.addEventListener('click', (e) => {
+            e.target.value ++;
+            e.target.innerText = e.target.value + "❤️";
+            total ++;
+            totalLikes.innerText = total + "❤️";
         })
     }
 }

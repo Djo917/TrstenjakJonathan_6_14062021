@@ -227,18 +227,10 @@ export class View {
         let getMedias = medias.filter(p => p.photographerId == idUrl);
        
         if(typeSort === 'Popularité') {
-            getMedias.sort(function byLikes(a, b) {
-                if(a.likes < b.likes) {
-                    return 1;
-                }
-                if(a.likes > b.likes) {
-                    return -1;
-                }
-                return 0;
-            })
+            getMedias.sort((a, b) => b.likes - a.likes );
         }
         else if(typeSort === 'Date') {
-            getMedias.sort(function byDate(a, b) {
+            getMedias.sort((a, b) => {
                 a = new Date(a.date);
                 b = new Date(b.date);
 
@@ -251,8 +243,8 @@ export class View {
                 return 0;
             })
         }
-        else {
-            getMedias.sort(function byTitle(a, b) {
+        else if (typeSort === 'Titre') {
+            getMedias.sort((a, b) => {
                 if(a.title > b.title) {
                     return 1;
                 }
@@ -261,7 +253,10 @@ export class View {
                 }
                 return 0;
             })
-        }               
+        }
+        else{
+            console.log("Unvalid type for sort");
+        }
 
         getMedias.forEach(media => { 
 
@@ -283,7 +278,7 @@ export class View {
             article.classList.add("content__vignettes");
             article.setAttribute("id", `${media.id}`);
                
-            article.appendChild(mediahtml.createImg());
+            article.appendChild(mediahtml.render());
 
             article.appendChild(div);
             div.classList.add("content__describe");
