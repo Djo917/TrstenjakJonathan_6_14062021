@@ -1,6 +1,6 @@
 // import { Picture } from '../lib/mediaimage.class.js';
 import { View } from './view.class.js';
-import { Ajax } from '/lib/ajax.class.js';
+import { Ajax } from './lib/ajax.class.js';
 
 class IndexPage {
     constructor(view, ajax) {
