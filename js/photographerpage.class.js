@@ -1,7 +1,7 @@
 import { View } from './view.class.js';
-import { Ajax } from '/lib/ajax.class.js';
-import { Mediafactory } from '/lib/mediafactory.class.js';
-import { Lightbox } from '/lib/lightbox.class.js';
+import { Ajax } from './lib/ajax.class.js';
+import { Mediafactory } from './lib/mediafactory.class.js';
+import { Lightbox } from './lib/lightbox.class.js';
 
 class PhotographerPage {
     constructor(view, ajax, mediafactory, lightbox) {
