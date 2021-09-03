@@ -222,43 +222,8 @@ export class View {
         
     }
 
-    renderAllMedia(medias, typeSort) {
-        const idUrl = window.location.search.substr(1);
-        let getMedias = medias.filter(p => p.photographerId == idUrl);
-       
-        if(typeSort === 'Popularité') {
-            getMedias.sort((a, b) => b.likes - a.likes );
-        }
-        else if(typeSort === 'Date') {
-            getMedias.sort((a, b) => {
-                a = new Date(a.date);
-                b = new Date(b.date);
-
-                if(a > b ){
-                    return -1;
-                }
-                else if(a < b){
-                    return 1;
-                }
-                return 0;
-            })
-        }
-        else if (typeSort === 'Titre') {
-            getMedias.sort((a, b) => {
-                if(a.title > b.title) {
-                    return 1;
-                }
-                if(a.title < b.title) {
-                    return -1;
-                }
-                return 0;
-            })
-        }
-        else{
-            console.log("Unvalid type for sort");
-        }
-
-        getMedias.forEach(media => { 
+    renderAllMedia(mediasSorted) {
+        mediasSorted.forEach(media => { 
 
             let mediahtml = this.mediafactory.createMedia(media, true);
             const idSection = document.getElementById("content");
