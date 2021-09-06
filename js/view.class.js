@@ -241,7 +241,6 @@ export class View {
 
             idSection.appendChild(article);
             article.classList.add("content__vignettes");
-            article.setAttribute("id", `${media.id}`);
                
             article.appendChild(mediahtml.render());
 
@@ -258,7 +257,6 @@ export class View {
             button.setAttribute("value", media.likes);
             button.innerText = button.value + "❤️";
             button.classList.add("content__describe--button");
-            button.setAttribute("id", media.id);
         });
     }
 }

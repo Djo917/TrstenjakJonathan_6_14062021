@@ -15,10 +15,9 @@ class PhotographerPage {
         this.showPhotographer();
         this.noPhotographer();
         this.totalCount();
-        this.eventLikes();
         this.handleModal();
         this.eventSort();
-        this.displayLightbox();
+        this.eventLikes();
     }
 
     showPhotographer() {
@@ -66,9 +65,7 @@ class PhotographerPage {
                     return 0;
                 })
             }
-            else{
-                console.log("Unvalid type for sort");
-            }
+            else{console.log("Unvalid type for sort");}
 
             return getMedias;
         }
@@ -77,13 +74,72 @@ class PhotographerPage {
             getMedias = data.media.filter(p => p.photographerId == idUrl);
             getMedias = specificSort(menu.value);
             this.view.renderAllMedia(getMedias);
+            this.displayLightbox(getMedias);
         })
 
         menu.addEventListener('change', (e) => {
             section.innerHTML = '';
             getMedias = specificSort(e.target.value);
             this.view.renderAllMedia(getMedias);
+            this.displayLightbox(getMedias);
         })        
+    }
+
+    displayLightbox(mediaSorted) {
+        const section = document.getElementById('content');
+        
+        section.addEventListener("click", (e) => {
+            let index = mediaSorted.findIndex((media) => media.id == e.target.dataset.id); 
+            
+            if(e.target.nodeName === 'IMG') {
+                const light = this.lightbox.buildLightbox();
+                document.body.appendChild(light);
+                const divLightBox = document.querySelector(".lightbox"); 
+                let html = this.lightbox.generateMedia(mediaSorted, index);
+                divLightBox.appendChild(html.render());
+                               
+                divLightBox.addEventListener('click', (e) => {
+                    
+                    if(e.target.id === 'closelight') {
+                        this.lightbox.closeLight(e);
+                        index = 0;
+
+                        divLightBox.addEventListener('keyup', (e) => {
+                            if(e.key == 'Escape') {
+                                this.lightbox.closeLight(e);
+                            }
+                            
+                        });
+                    }
+
+                    else if(e.target.id === 'nextelement') {
+                        light.removeChild(light.lastChild);
+                        index++;
+                        
+                        if(index >= mediaSorted.length){
+                            index = 0;
+                        }
+                        
+                        html = this.lightbox.generateMedia(mediaSorted, index);
+                        divLightBox.appendChild(html.render());
+                    }
+
+                    else if(e.target.id === 'previouselement') {
+                        light.removeChild(light.lastChild);
+                        
+                        if(index <= 0){
+                            index = mediaSorted.length;
+                        }
+
+                        index--;
+                        html = this.lightbox.generateMedia(mediaSorted, index);
+                        divLightBox.appendChild(html.render());
+                    }
+                })
+
+
+            }
+        });
     }
 
     noPhotographer() {
@@ -197,66 +253,45 @@ class PhotographerPage {
     totalCount() {
         const datas = this.ajax.fetchData();
         const idUrl = window.location.search.substr(1);
-
+        
+        
         datas.then(data => {
-            let getMedias = data.media.filter(p => p.photographerId == idUrl);
             let totalLikes = 0;
+            let getMedias = data.media.filter(p => p.photographerId == idUrl);
+            
             const getPrice = data.photographers.filter(p => p.id == idUrl)
             const count = document.getElementById("totallikes");
-            
             const price = document.getElementById("price");
             
             getMedias.forEach(l => {
                 totalLikes += l.likes
-                count.innerText = totalLikes + "❤️";
             })
-
+            count.innerText = totalLikes + "❤️";
+            
             let priceEuro = new Intl.NumberFormat('fr-FR', { /* Formate le prix en fonction du local */
 
                 style: 'currency',
                 currency: 'EUR',
                 minimumFractionDigits: 0
             });
-            this.eventLikes(totalLikes);
+            // this.eventLikes(totalLikes);
             price.innerText = priceEuro.format(getPrice[0].price) + '/jour';
         })
-
-        
     }
 
-    eventLikes(total) {
+    eventLikes() {
         const section = document.getElementById("content"); 
-        const totalLikes = document.getElementById('totallikes');
+        const total = document.getElementById('totallikes');
 
         section.addEventListener('click', (e) => {
             if(e.target.nodeName === 'BUTTON') {
                 e.target.value ++;
                 e.target.innerText = e.target.value + "❤️";
-                total ++;
-                totalLikes.innerText = total + "❤️";
+                total.value ++;
+                console.log(total.value);
+                total.innerText = total.value + "❤️";
             }
         })
-    }
-
-    displayLightbox() {
-        const section = document.getElementById('content');
-        const datas = this.ajax.fetchData();
-        const idUrl = window.location.search.substr(1);
-        
-        datas.then(data => {
-            let getMedias = data.media.filter(p => p.photographerId == idUrl);
-            
-            section.addEventListener("click", (e) => {
-                if(e.target.nodeName === 'IMG') {
-                    // const light = this.lightbox.buildLightbox(e.target.attributes[1].nodeValue, e.target.attributes[2].nodeValue);
-                    const light = this.lightbox.buildLightbox(getMedias);
-                    document.body.appendChild(light);
-                }
-            })
-        })
-
-
-
     }
 }
 

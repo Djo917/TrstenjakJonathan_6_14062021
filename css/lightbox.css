@@ -26,7 +26,7 @@
   opacity: 0;
 }
 
-.lightbox__next, .lightbox__prev {
+.lightbox__next, .lightbox__previous {
   border: none;
   background: url(/media/arrow.svg) center center/30em 15em no-repeat;
   width: 7%;
@@ -38,7 +38,7 @@
   z-index: 11;
 }
 
-.lightbox__prev {
+.lightbox__previous {
   right: auto;
   left: 0;
   -webkit-transform: rotate(180deg);

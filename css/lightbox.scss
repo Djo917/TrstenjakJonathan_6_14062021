@@ -17,7 +17,7 @@
         opacity: 0;
     }
     
-    &__next, &__prev {
+    &__next, &__previous {
         border: none;
         background: url(/media/arrow.svg) center center / 30em 15em no-repeat;
         width: 7%;
@@ -29,7 +29,7 @@
         z-index: 11;
     }
 
-    &__prev {
+    &__previous {
         right: auto;
         left: 0;
         transform: rotate(180deg);
