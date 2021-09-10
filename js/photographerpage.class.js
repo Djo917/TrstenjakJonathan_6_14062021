@@ -14,10 +14,10 @@ class PhotographerPage {
     run() {
         this.showPhotographer();
         this.noPhotographer();
-        this.totalCount();
         this.handleModal();
-        this.eventSort();
         this.eventLikes();
+        this.price();
+        this.initialDisplay();
     }
 
     showPhotographer() {
@@ -25,122 +25,151 @@ class PhotographerPage {
 
         datas.then(data => {
             this.view.towardsPhotographer(data.photographers);
-        })
-        
+        })   
     }
-    
-    eventSort() {
+
+    initialDisplay() {
         const idUrl = window.location.search.substr(1);
-        const menu = document.getElementById('menufilter');
-        const section = document.getElementById('content');
         const datas = this.ajax.fetchData();
-        let getMedias = [];
-
-        const specificSort = (sortValue) => {
-            if(sortValue === 'Popularité') {
-                getMedias.sort((a, b) => b.likes - a.likes );
-            }
-            else if(sortValue === 'Date') {
-                getMedias.sort((a, b) => {
-                    a = new Date(a.date);
-                    b = new Date(b.date);
-    
-                    if(a > b ){
-                        return -1;
-                    }
-                    else if(a < b){
-                        return 1;
-                    }
-                    return 0;
-                })
-            }
-            else if (sortValue === 'Titre') {
-                getMedias.sort((a, b) => {
-                    if(a.title > b.title) {
-                        return 1;
-                    }
-                    if(a.title < b.title) {
-                        return -1;
-                    }
-                    return 0;
-                })
-            }
-            else{console.log("Unvalid type for sort");}
-
-            return getMedias;
-        }
+        const menu = document.getElementById('menufilter');
         
         datas.then(data => {
-            getMedias = data.media.filter(p => p.photographerId == idUrl);
-            getMedias = specificSort(menu.value);
-            this.view.renderAllMedia(getMedias);
-            this.displayLightbox(getMedias);
+            let getMedias = data.media.filter(p => p.photographerId == idUrl);
+            let mediasSorted = this.sortingBy(getMedias, menu.value);
+            this.view.renderAllMedia(mediasSorted);
+            this.eventSort(mediasSorted);
+            this.lightbox.eventShow(mediasSorted);
         })
-
-        menu.addEventListener('change', (e) => {
-            section.innerHTML = '';
-            getMedias = specificSort(e.target.value);
-            this.view.renderAllMedia(getMedias);
-            this.displayLightbox(getMedias);
-        })        
     }
 
-    displayLightbox(mediaSorted) {
+    sortingBy(arrayMedia, sortType) {
+        if(sortType === 'Popularité') {
+            arrayMedia.sort((a, b) => b.likes - a.likes);
+        }
+        else if(sortType === 'Date') {
+            arrayMedia.sort((a,b) => new Date(b.date) - new Date(a.date));
+        }
+        else if (sortType === 'Titre') {
+            arrayMedia.sort((a, b) => {
+                if(a.title > b.title) {
+                    return 1;
+                }
+                if(a.title < b.title) {
+                    return -1;
+                }
+                return 0;
+            })
+        }
+        else{console.log("Unvalid type for sort");}
+
+        return arrayMedia;
+    }
+
+    eventSort(initialSort){
+        const menu = document.getElementById('menufilter');
         const section = document.getElementById('content');
-        
-        section.addEventListener("click", (e) => {
-            let index = mediaSorted.findIndex((media) => media.id == e.target.dataset.id); 
-            
-            if(e.target.nodeName === 'IMG') {
-                const light = this.lightbox.buildLightbox();
-                document.body.appendChild(light);
-                const divLightBox = document.querySelector(".lightbox"); 
-                let html = this.lightbox.generateMedia(mediaSorted, index);
-                divLightBox.appendChild(html.render());
-                               
-                divLightBox.addEventListener('click', (e) => {
-                    
-                    if(e.target.id === 'closelight') {
-                        this.lightbox.closeLight(e);
-                        index = 0;
 
-                        divLightBox.addEventListener('keyup', (e) => {
-                            if(e.key == 'Escape') {
-                                this.lightbox.closeLight(e);
-                            }
-                            
-                        });
-                    }
-
-                    else if(e.target.id === 'nextelement') {
-                        light.removeChild(light.lastChild);
-                        index++;
-                        
-                        if(index >= mediaSorted.length){
-                            index = 0;
-                        }
-                        
-                        html = this.lightbox.generateMedia(mediaSorted, index);
-                        divLightBox.appendChild(html.render());
-                    }
-
-                    else if(e.target.id === 'previouselement') {
-                        light.removeChild(light.lastChild);
-                        
-                        if(index <= 0){
-                            index = mediaSorted.length;
-                        }
-
-                        index--;
-                        html = this.lightbox.generateMedia(mediaSorted, index);
-                        divLightBox.appendChild(html.render());
-                    }
-                })
-
-
-            }
-        });
+        menu.addEventListener('change', () => {
+            section.innerHTML = '';
+            let newSort = this.sortingBy(initialSort, menu.value);
+            this.view.renderAllMedia(newSort);
+            // new Lightbox(newSort);
+        })
     }
+    
+    // eventSort() {
+    //     const idUrl = window.location.search.substr(1);
+    //     const menu = document.getElementById('menufilter');
+    //     const section = document.getElementById('content');
+    //     const datas = this.ajax.fetchData();
+    //     let getMedias = [];
+
+    //     const specificSort = (sortValue) => {
+    //         if(sortValue === 'Popularité') {
+    //             getMedias.sort((a, b) => b.likes - a.likes );
+    //         }
+    //         else if(sortValue === 'Date') {
+    //             getMedias.sort((a,b) => new Date(b.date) - new Date(a.date));
+    //         }
+        //     else if (sortValue === 'Titre') {
+        //         getMedias.sort((a, b) => {
+        //             if(a.title > b.title) {
+        //                 return 1;
+        //             }
+        //             if(a.title < b.title) {
+        //                 return -1;
+        //             }
+        //             return 0;
+        //         })
+        //     }
+        //     else{console.log("Unvalid type for sort");}
+        //     return getMedias;
+        // }
+        
+    //     datas.then(data => {
+    //         getMedias = data.media.filter(p => p.photographerId == idUrl);
+    //         getMedias = specificSort(menu.value);
+    //         this.view.renderAllMedia(getMedias);
+    //         this.lightbox.eventShow(getMedias);              
+    //     })
+
+    //     menu.addEventListener('change', (e) => {
+    //         section.innerHTML = '';
+    //         getMedias = specificSort(e.target.value);
+    //         this.view.renderAllMedia(getMedias);
+    //         this.lightbox.eventShow(getMedias);
+    //     })
+    //     return getMedias; 
+    // }
+
+    // displayLightbox(mediaSorted) {
+    //     const section = document.getElementById('content');
+
+    //     section.addEventListener("click", (e) => {
+    //         let index = mediaSorted.findIndex((media) => media.id == e.target.dataset.id); 
+            
+    //         if(e.target.nodeName === 'IMG') {
+    //             const light = this.lightbox.buildLightbox();
+    //             document.body.appendChild(light);
+    //             const divLightBox = document.querySelector(".lightbox");
+                
+    //             let html = this.lightbox.generateMedia(mediaSorted, index);
+    //             divLightBox.appendChild(html.render());
+
+    //             divLightBox.addEventListener('click', (e) => {
+                    
+    //                 if(e.target.id === 'closelight') {
+    //                     this.lightbox.closeLight(e);
+    //                     index = 0;
+    //                     divLightBox.removeEventListener('click', (e));
+    //                 }
+            
+    //                 else if(e.target.id === 'nextelement') {
+    //                     light.removeChild(light.lastChild);
+    //                     index++;
+                        
+    //                     if(index >= mediaSorted.length){
+    //                         index = 0;
+    //                     }
+                        
+    //                     html = this.lightbox.generateMedia(mediaSorted, index);
+    //                     divLightBox.appendChild(html.render());
+    //                 }
+            
+    //                 else if(e.target.id === 'previouselement') {
+    //                     light.removeChild(light.lastChild);
+    //                     if(index <= 0){
+    //                         index = mediaSorted.length;
+    //                     }
+            
+    //                     index--;
+    //                     html = this.lightbox.generateMedia(mediaSorted, index);
+    //                     divLightBox.appendChild(html.render());
+    //                 }
+    //             })
+    //         }
+    //     });   
+    // }
 
     noPhotographer() {
         const datas = this.ajax.fetchData();
@@ -175,7 +204,8 @@ class PhotographerPage {
             modal.style.display = "block";
         })
 
-        button.addEventListener('keyup', (e) => {
+        button.addEventListener('keydown', (e) => {
+            console.log(e.key);
             if(e.key == 'Escape') {
                 closeForm();
             }
@@ -250,31 +280,19 @@ class PhotographerPage {
         })
     }
 
-    totalCount() {
+    price() {
         const datas = this.ajax.fetchData();
         const idUrl = window.location.search.substr(1);
         
-        
-        datas.then(data => {
-            let totalLikes = 0;
-            let getMedias = data.media.filter(p => p.photographerId == idUrl);
-            
+        datas.then(data => {            
             const getPrice = data.photographers.filter(p => p.id == idUrl)
-            const count = document.getElementById("totallikes");
             const price = document.getElementById("price");
             
-            getMedias.forEach(l => {
-                totalLikes += l.likes
-            })
-            count.innerText = totalLikes + "❤️";
-            
-            let priceEuro = new Intl.NumberFormat('fr-FR', { /* Formate le prix en fonction du local */
-
+            let priceEuro = new Intl.NumberFormat('fr-FR', { 
                 style: 'currency',
                 currency: 'EUR',
                 minimumFractionDigits: 0
             });
-            // this.eventLikes(totalLikes);
             price.innerText = priceEuro.format(getPrice[0].price) + '/jour';
         })
     }
@@ -282,18 +300,19 @@ class PhotographerPage {
     eventLikes() {
         const section = document.getElementById("content"); 
         const total = document.getElementById('totallikes');
+        let likesMedia = 0;
 
         section.addEventListener('click', (e) => {
-            if(e.target.nodeName === 'BUTTON') {
+            
+            if(e.target.nodeName === 'BUTTON') {                
                 e.target.value ++;
                 e.target.innerText = e.target.value + "❤️";
-                total.value ++;
-                console.log(total.value);
-                total.innerText = total.value + "❤️";
+                total.innerText = likesMedia + "❤️";
+                this.view.displayTotalLikes();
             }
         })
     }
 }
 
-const photographerPage = new PhotographerPage(new View(), new Ajax('/data/FishEyeData.json'), new Mediafactory(),  new Lightbox());
+const photographerPage = new PhotographerPage(new View(), new Ajax('/data/FishEyeData.json'), new Mediafactory(), new Lightbox());
 photographerPage.run();

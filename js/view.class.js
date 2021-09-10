@@ -254,10 +254,27 @@ export class View {
             price.classList.add("content__describe--price");
 
             div.appendChild(button);
-            button.setAttribute("value", media.likes);
-            button.innerText = button.value + "❤️";
             button.classList.add("content__describe--button");
+            button.setAttribute("value", media.likes);
+            button.innerText = button.value + "❤️"; 
         });
+
+        this.displayTotalLikes();
+    }
+
+    displayTotalLikes() {
+        const buttons = document.querySelectorAll(".content__describe--button");
+        const count = document.getElementById("totallikes");
+        let totalLikes = 0;
+
+        const sum = () => {
+            buttons.forEach(l => {
+                totalLikes += parseInt(l.value, 10);
+            })
+    
+            count.innerText = totalLikes + "❤️";
+        }
+        sum();
     }
 }
 export default View;
