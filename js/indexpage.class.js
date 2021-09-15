@@ -10,6 +10,7 @@ class IndexPage {
         this.showAllPhotographers(this.tagsSelected);
         this.showTags();
         this.eventTags();
+        this.eventScroll();
     }
 
     showAllPhotographers(filtreTags) {
@@ -80,6 +81,21 @@ class IndexPage {
                     tagsSelected.push(event.target.innerText.substring(1)); //Retire le #
                     this.showAllPhotographers(tagsSelected);
                 }
+            }
+        })
+    }
+
+    eventScroll() {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.onscroll = (ev) => {
+
+                if(window.pageYOffset < 100){
+                    document.querySelector('.photographers--redirect').style.display = 'none';
+                }
+                else {
+                    document.querySelector('.photographers--redirect').style.display = 'flex';
+                }
+                
             }
         })
     }

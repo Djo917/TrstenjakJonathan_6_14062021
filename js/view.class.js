@@ -34,6 +34,7 @@ export class View {
             a.appendChild(img);
             img.src = `media/sample_photos/Photographers_ID_Photos/${photographer.portrait}`;
             img.classList.add("photographers__line--pictures");
+            img.alt = `${photographer.altText}`;
 
             a.appendChild(h2).innerText = photographer.name;
             h2.classList.add("photographers__line--name");  
