@@ -105,14 +105,17 @@ class PhotographerPage {
         const button = document.querySelector(".photographers__button--submit ");
         const modal = document.querySelector(".wrappermodal");
         const cross = document.getElementById("close");
-        const mask = /\W/;
+        const mask2 = /[\wéèëêàâäïîôöÿçùûüœæ]{2,}/i;
+        
 
         button.addEventListener('click', () => {
+            const name = document.querySelector('.photographers__details--name');
+            const nameModal = document.querySelector('.modal--contactname');
+            nameModal.innerHTML += name.textContent;
             modal.style.display = "block";
         })
 
         button.addEventListener('keydown', (e) => {
-            console.log(e.key);
             if(e.key == 'Escape') {
                 closeForm();
             }
@@ -127,11 +130,14 @@ class PhotographerPage {
             let prenom = document.getElementById("first");
             
           
-            if (prenom.value.length < 2 || prenom.value.match(mask)) {
+            if (prenom.value.length < 2) {
                 messageErreurPrenom.textContent ="Veuillez entrer 2 caractères ou plus pour le champ du prénom.";
                 return false;
-          
             } 
+            else if(mask2.test(prenom.value) === false) {
+                messageErreurPrenom.textContent ="Caractères spéciaux interdits";
+                return false;
+            }
             else {
               messageErreurPrenom.textContent = "";
               return true;
@@ -142,11 +148,15 @@ class PhotographerPage {
             const messageErreurNom = document.getElementById("messageErreurNom");
             let nom = document.getElementById("last");
           
-            if (nom.value.length < 2 || nom.value.match(mask)) {
+            if (nom.value.length < 1 || nom.value.match(mask2)) {
               messageErreurNom.textContent ="Veuillez entrer 2 caractères ou plus pour le champ du nom.";
               return false;
-          
-            } else {
+            }
+            else if(mask2.test(nom.value)) {
+                messageErreurNom.textContent ="Caractères spéciaux interdits";
+                return false;
+            } 
+            else {
               messageErreurNom.textContent = "";
               return true;
             }
@@ -178,11 +188,29 @@ class PhotographerPage {
             }
           };
 
+          const msgValid = () => {
+            const msgErreur = document.getElementById("messageErreurMessage");
+            const msg = document.getElementById("message");
+            console.log(msg.value);
+
+            if(msg.value.length < 10) {
+                msgErreur.textContent = "Veuillez saisir un message destiné au photographe";
+            }
+            else if(mask2.test(msg.value)) {
+                msgErreur.textContent = "Caractères spéciaux interdits";
+            }
+
+            else {
+                msgErreur.textContent = "";
+            }
+          }
+
         document.getElementById("formulaire").addEventListener("submit", (e) => {
             e.preventDefault();
             firstNameValid();
             lastNameValid();
             emailAdressValid();
+            msgValid();
             confirmationSubmit();
         })
     }

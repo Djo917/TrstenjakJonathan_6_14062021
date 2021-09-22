@@ -40,7 +40,7 @@
 .modal {
   position: relative;
   margin: 5% auto;
-  height: 520px;
+  height: 550px;
   width: 380px;
   background-color: #DB8876;
   border-radius: 5px;
@@ -340,6 +340,10 @@ main {
   font-family: "DM Sans";
   font-weight: 500;
   font-size: 1.3em;
+}
+
+.labelsubmit {
+  text-indent: -4000px;
 }
 
 /* Début reponsive */

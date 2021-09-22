@@ -10,8 +10,7 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="icon" type="image/png" href="media/favicon.png">
     <link rel="shortcut icon" type="image/png" href="images/logo.ico"/>
-    <script type="module" src="./js/photographerpage.class.js" defer ></script>
-        
+            
     <title>Fisheye</title>
 </head>
 
@@ -50,8 +49,8 @@
         
         <div class ="wrappermodal">
             <div class="modal">
-                <span id="close" class="modal--close" tabindex="1"></span>
-                <p class="modal--contactname">Contactez-moi <br> Mimi Keel</p>
+                <buton id="close" class="modal--close" tabindex="0"></buton>
+                <p class="modal--contactname">Contactez-moi <br></p>
                 <form 
                     method="post"
                     name="contact"
@@ -93,22 +92,23 @@
                 </div>
 
                 <div class="modal__contact--message modal__contact--pos">
-                    <label for="email">Votre message</label><br>
+                    <label for="message">Votre message</label><br>
                     <input
                         class="modal__contact--textareamsg"
                         type="text"
                         id="message"
                         name="message"
                     >
-                    <span id="messageErreurEmail" class="messageErreur"></span>
+                    <span id="messageErreurMessage" class="messageErreur"></span>
                 </div>
                 
                 <div class ="modal__contact--btn modal__contact--pos">
+                    <label for="btnsubmit" class ="labelsubmit">Envoyez</label><br>
                     <input
                         class="modal__contact--btnsubmit"
                         type="submit"
                         id="btnsubmit"
-                        value="Envoyer"
+                        value="Envoyez"
                     />
                 </div>
 
@@ -124,10 +124,12 @@
         </div>
 
         <div class="lightbox">
-            <button id="closelight" class="lightbox__close buttonlightbox"></button>
-            <button id="nextelement" class="lightbox__next buttonlightbox"></button>
-            <button id="previouselement" class="lightbox__previous buttonlightbox"></button>
+            <button id="closelight" class="lightbox__close buttonlightbox">close</button>
+            <button id="nextelement" class="lightbox__next buttonlightbox">next</button>
+            <button id="previouselement" class="lightbox__previous buttonlightbox">previous</button>
         </div>
     </main>
+
+    <script type="module" src="./js/photographerpage.class.js"></script>
 </body>
 </html>

@@ -230,7 +230,7 @@ export class View {
             const idSection = document.getElementById("content");
             const article = document.createElement("article");
             const div = document.createElement("div");
-            const p = document.createElement("p");
+            const h2 = document.createElement("h2");
             const price = document.createElement("p");
             const button = document.createElement("button");
 
@@ -248,8 +248,8 @@ export class View {
             article.appendChild(div);
             div.classList.add("content__describe");
 
-            div.appendChild(p).innerText = media.title;
-            p.classList.add("content__describe--text");
+            div.appendChild(h2).innerText = media.title;
+            h2.classList.add("content__describe--text");
 
             article.appendChild(price).innerText = priceEuro.format(media.price) + '/jour';
             price.classList.add("content__describe--price");

@@ -59,33 +59,16 @@
   cursor: pointer;
   -webkit-transition: opacity 0.3s;
   transition: opacity 0.3s;
+  text-indent: -4000px;
 }
 
 .lightbox .buttonlightbox:hover {
   opacity: 1;
 }
 
-.lightbox__container {
-  width: 60em;
-  height: 60em;
-  margin-left: 10em;
-  margin-right: 10em;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-animation: lightboxDisplay 0.5s;
-          animation: lightboxDisplay 0.5s;
-}
-
-.lightbox__container img {
-  width: 100%;
-  height: 100%;
+.lightboximg {
+  height: 90%;
+  width: 70%;
 }
 
 @-webkit-keyframes lightboxDisplay {

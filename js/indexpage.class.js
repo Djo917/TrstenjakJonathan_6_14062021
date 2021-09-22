@@ -87,7 +87,7 @@ class IndexPage {
 
     eventScroll() {
         document.addEventListener('DOMContentLoaded', () => {
-            window.onscroll = (ev) => {
+            window.onscroll = () => {
 
                 if(window.pageYOffset < 100){
                     document.querySelector('.photographers--redirect').style.display = 'none';
