@@ -105,14 +105,16 @@ class PhotographerPage {
         const button = document.querySelector(".photographers__button--submit ");
         const modal = document.querySelector(".wrappermodal");
         const cross = document.getElementById("close");
-        const mask2 = /[\wéèëêàâäïîôöÿçùûüœæ]{2,}/i;
+        const mask2 = /[\wéèëêàâäïîôöÿçùûüœæ]{1,}/i;
         
 
         button.addEventListener('click', () => {
             const name = document.querySelector('.photographers__details--name');
             const nameModal = document.querySelector('.modal--contactname');
-            nameModal.innerHTML += name.textContent;
+            const prenom = document.getElementById('first');
+            nameModal.innerHTML = "Contactez-moi " + name.textContent;
             modal.style.display = "block";
+            prenom.focus();
         })
 
         button.addEventListener('keydown', (e) => {
@@ -148,11 +150,11 @@ class PhotographerPage {
             const messageErreurNom = document.getElementById("messageErreurNom");
             let nom = document.getElementById("last");
           
-            if (nom.value.length < 1 || nom.value.match(mask2)) {
+            if (nom.value.length < 1) {
               messageErreurNom.textContent ="Veuillez entrer 2 caractères ou plus pour le champ du nom.";
               return false;
             }
-            else if(mask2.test(nom.value)) {
+            else if(mask2.test(nom.value) === false) {
                 messageErreurNom.textContent ="Caractères spéciaux interdits";
                 return false;
             } 
@@ -196,7 +198,7 @@ class PhotographerPage {
             if(msg.value.length < 10) {
                 msgErreur.textContent = "Veuillez saisir un message destiné au photographe";
             }
-            else if(mask2.test(msg.value)) {
+            else if(mask2.test(msg.value) === false) {
                 msgErreur.textContent = "Caractères spéciaux interdits";
             }
 

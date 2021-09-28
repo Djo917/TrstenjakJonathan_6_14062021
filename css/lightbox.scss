@@ -19,9 +19,9 @@
     
     &__next, &__previous {
         border: none;
-        background: url(/media/arrow.svg) center center / 30em 15em no-repeat;
+        background: url(/media/arrow.svg) center center / 3em 10em no-repeat;
         width: 7%;
-        height: 70%;
+        height: 55%;
         position: fixed;
         top: 20em;
         right: 10px;
@@ -39,7 +39,7 @@
         border: none;
         width: 8em;
         height: 5em;
-        background: url(/media/cross.svg) center center / 64px 64px no-repeat transparent;
+        background: url(/media/cross.svg) center center / 45px 64px no-repeat transparent;
         position: fixed;
         top: 20px;
         right: 8px;
@@ -47,7 +47,7 @@
     }
 
     .buttonlightbox{
-        opacity: 0.5;
+        opacity: 0.9;
         cursor: pointer;
         transition: opacity 0.3s;
         text-indent: -4000px;
@@ -57,13 +57,48 @@
         opacity: 1;
     }
 
-    &img {
-        height: 90%;
-        width: 70%;
+    .imglightbox {
+        height: 80%;
+        width: 75%;
+    }
+
+    .title--lightbox {
+        position: fixed;
+        left: 5em;
+        z-index: 11;
+        bottom: 0;
+        color: #901C1C;
+        font-size: 2em;
+        font-weight: 400;
     }
 
     @keyframes lightboxDisplay {
         from {opacity: 0;}
         to {opacity: 1;}
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .lightbox {
+        width: 84%;
+        left: 0em;
+    }
+
+    .lightbox .title--lightbox {
+        left: 0em;
+    }
+
+    .lightbox__close {
+        right: 50px;
+    }
+
+    .lightbox__next {
+        top: 16em;
+        right: 80px;
+    }
+
+    .lightbox__previous {
+        top: 16em;
+        right: 80px;
     }
 }

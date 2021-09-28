@@ -29,7 +29,7 @@
                 <input
                     class="photographers__button--submit fontstyle"
                     type="submit"
-                    id="btnsubmit"
+                    id="btncontact"
                     value="Contactez-moi"
                 />
             </div>
@@ -37,7 +37,7 @@
         </section>
 
             <nav class = "menu" aria-label ="menu de tri">
-                <span class = "menu--title">Trier par</span>
+                <label for="menufilter">Trier par</label>
                 <select name="options" class="menu__nav" id ="menufilter">
                     <option value ="Popularité" class="menu__nav--text">Popularité</option>
                     <option value ="Titre" class="menu__nav--text">Titre</option>
@@ -49,8 +49,8 @@
         
         <div class ="wrappermodal">
             <div class="modal">
-                <buton id="close" class="modal--close" tabindex="0"></buton>
-                <p class="modal--contactname">Contactez-moi <br></p>
+                <button id="close" class="modal--close" tabindex="0"></button>
+                <h2 class="modal--contactname">Contactez-moi <br></h2>
                 <form 
                     method="post"
                     name="contact"
@@ -103,19 +103,19 @@
                 </div>
                 
                 <div class ="modal__contact--btn modal__contact--pos">
-                    <label for="btnsubmit" class ="labelsubmit">Envoyez</label><br>
                     <input
                         class="modal__contact--btnsubmit"
                         type="submit"
                         id="btnsubmit"
-                        value="Envoyez"
+                        value="Envoyer"
+                        aria-label="bouton envoyer"
                     />
                 </div>
 
             </form>  
             </div>
         </div>
-        <section class="content" id = "content"></section>
+        <div class="content" id = "content"></div>
     
         
         <div class = "countlikes" id = "countandprice">

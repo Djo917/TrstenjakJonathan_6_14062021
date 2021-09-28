@@ -227,6 +227,7 @@ export class View {
         mediasSorted.forEach(media => { 
 
             let mediahtml = this.mediafactory.createMedia(media, true);
+            const a = document.createElement("a");
             const idSection = document.getElementById("content");
             const article = document.createElement("article");
             const div = document.createElement("div");
@@ -242,8 +243,9 @@ export class View {
 
             idSection.appendChild(article);
             article.classList.add("content__vignettes");
-               
-            article.appendChild(mediahtml.render());
+            article.appendChild(a);   
+            a.href = "#";
+            a.appendChild(mediahtml.render());
 
             article.appendChild(div);
             div.classList.add("content__describe");
