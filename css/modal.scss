@@ -16,7 +16,7 @@ $primarybackground: #901C1C;
 .modal {
     position: relative;
     margin: 5% auto;
-    height: 520px;
+    height: 550px;
     width: 380px;
     background-color: #DB8876;
     border-radius: 5px;
@@ -29,10 +29,13 @@ $primarybackground: #901C1C;
         font-size: 1.5em;
         margin-bottom: -0.05em;
         color: $textmodal;
+        font-weight: 200;
     }
     &--close {
+        background-color: #DB8876;
+        border: none;
         position: absolute;
-        left: 21.3em;
+        left: 24.3em;
         width: 2em;
         height: 2em;
     }
@@ -92,6 +95,10 @@ $primarybackground: #901C1C;
         border-radius: 5px;
         margin-top: 1.5em;
     }
+}
+
+.labelsubmit {
+    text-indent: -3000px;
 }
 
 .messageErreur {

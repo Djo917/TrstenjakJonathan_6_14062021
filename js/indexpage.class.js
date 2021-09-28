@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 import { View } from '/view.class.js';
 import { Ajax } from './lib/ajax.class.js';
+=======
+import { View } from './view.class.js';
+import { Ajax } from '../lib/ajax.class.js';
+>>>>>>> develop
 
 class IndexPage {
     constructor(view, ajax) {
@@ -10,6 +15,7 @@ class IndexPage {
         this.showAllPhotographers(this.tagsSelected);
         this.showTags();
         this.eventTags();
+        this.eventScroll();
     }
 
     showAllPhotographers(filtreTags) {
@@ -83,6 +89,26 @@ class IndexPage {
             }
         })
     }
+
+    eventScroll() {
+        document.addEventListener('DOMContentLoaded', () => {
+            window.onscroll = () => {
+
+                if(window.pageYOffset < 100){
+                    document.querySelector('.photographers--redirect').style.display = 'none';
+                }
+                else {
+                    document.querySelector('.photographers--redirect').style.display = 'flex';
+                }
+                
+            }
+        })
+    }
 }
+<<<<<<< HEAD
 const indexPage = new IndexPage(new View(), new Ajax('/data/FishEyeData.json'));
 indexPage.run();
+=======
+const indexPage = new IndexPage(new View(), new Ajax('../data/FishEyeData.json'));
+indexPage.run();
+>>>>>>> develop

@@ -98,6 +98,7 @@ main {
         margin-top: 1em;
         font-weight: 700;
         font-size: 20px;
+        cursor: pointer;
     }
 }
 
@@ -183,6 +184,10 @@ main {
         font-weight: 500;
         font-size: 1.3em;
     }
+}
+
+.labelsubmit {
+    text-indent: -4000px;
 }
 
 
@@ -271,7 +276,7 @@ main {
     }
     
     .content {
-        width: 24.5em;
+        width: 22.5em;
         flex-direction: column;
 
         &__vignettes {
@@ -294,7 +299,7 @@ main {
     .photographers__button {
         position: fixed;
         z-index: 500;
-        top: 50em;
+        top: 69%;
         width: 50%;
         border-radius: 1em;
         left: 20%;

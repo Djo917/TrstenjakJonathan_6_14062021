@@ -1,4 +1,4 @@
-import { Mediafactory } from '/lib/mediafactory.class.js';
+import { Mediafactory } from '../lib/mediafactory.class.js';
 
 export class View {
     constructor() {
@@ -34,6 +34,7 @@ export class View {
             a.appendChild(img);
             img.src = `media/sample_photos/Photographers_ID_Photos/${photographer.portrait}`;
             img.classList.add("photographers__line--pictures");
+            img.alt = `${photographer.altText}`;
 
             a.appendChild(h2).innerText = photographer.name;
             h2.classList.add("photographers__line--name");  
@@ -222,49 +223,15 @@ export class View {
         
     }
 
-    renderAllMedia(medias, typeSort) {
-        const idUrl = window.location.search.substr(1);
-        let getMedias = medias.filter(p => p.photographerId == idUrl);
-       
-        if(typeSort === 'Popularité') {
-            getMedias.sort((a, b) => b.likes - a.likes );
-        }
-        else if(typeSort === 'Date') {
-            getMedias.sort((a, b) => {
-                a = new Date(a.date);
-                b = new Date(b.date);
-
-                if(a > b ){
-                    return -1;
-                }
-                else if(a < b){
-                    return 1;
-                }
-                return 0;
-            })
-        }
-        else if (typeSort === 'Titre') {
-            getMedias.sort((a, b) => {
-                if(a.title > b.title) {
-                    return 1;
-                }
-                if(a.title < b.title) {
-                    return -1;
-                }
-                return 0;
-            })
-        }
-        else{
-            console.log("Unvalid type for sort");
-        }
-
-        getMedias.forEach(media => { 
+    renderAllMedia(mediasSorted) {
+        mediasSorted.forEach(media => { 
 
             let mediahtml = this.mediafactory.createMedia(media, true);
+            const a = document.createElement("a");
             const idSection = document.getElementById("content");
             const article = document.createElement("article");
             const div = document.createElement("div");
-            const p = document.createElement("p");
+            const h2 = document.createElement("h2");
             const price = document.createElement("p");
             const button = document.createElement("button");
 
@@ -276,25 +243,41 @@ export class View {
 
             idSection.appendChild(article);
             article.classList.add("content__vignettes");
-            article.setAttribute("id", `${media.id}`);
-               
-            article.appendChild(mediahtml.render());
+            article.appendChild(a);   
+            a.href = "#";
+            a.appendChild(mediahtml.render());
 
             article.appendChild(div);
             div.classList.add("content__describe");
 
-            div.appendChild(p).innerText = media.title;
-            p.classList.add("content__describe--text");
+            div.appendChild(h2).innerText = media.title;
+            h2.classList.add("content__describe--text");
 
             article.appendChild(price).innerText = priceEuro.format(media.price) + '/jour';
             price.classList.add("content__describe--price");
 
             div.appendChild(button);
-            button.setAttribute("value", media.likes);
-            button.innerText = button.value + "❤️";
             button.classList.add("content__describe--button");
-            button.setAttribute("id", media.id);
+            button.setAttribute("value", media.likes);
+            button.innerText = button.value + "❤️"; 
         });
+
+        this.displayTotalLikes();
+    }
+
+    displayTotalLikes() {
+        const buttons = document.querySelectorAll(".content__describe--button");
+        const count = document.getElementById("totallikes");
+        let totalLikes = 0;
+
+        const sum = () => {
+            buttons.forEach(l => {
+                totalLikes += parseInt(l.value, 10);
+            })
+    
+            count.innerText = totalLikes + "❤️";
+        }
+        sum();
     }
 }
 export default View;
